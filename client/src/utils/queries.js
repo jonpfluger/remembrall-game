@@ -1,21 +1,21 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_PROFILES = gql`
-  query allProfiles {
-    profiles {
+export const QUERY_WIZARDS = gql`
+  query allWizards {
+    wizards {
       _id
       name
-      skills
+      spells
     }
   }
 `;
 
-export const QUERY_SINGLE_PROFILE = gql`
-  query singleProfile($profileId: ID!) {
-    profile(profileId: $profileId) {
+export const QUERY_SINGLE_WIZARD = gql`
+  query singleWizard($wizardId: ID!) {
+    wizard(wizardId: $wizardId) {
       _id
       name
-      skills
+      spells
     }
   }
 `;
@@ -25,7 +25,7 @@ export const QUERY_ME = gql`
     me {
       _id
       name
-      skills
+      spells
     }
   }
 `;
