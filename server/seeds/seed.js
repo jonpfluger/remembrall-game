@@ -1,11 +1,11 @@
 const db = require('../config/connection');
-const { Profile } = require('../models');
-const profileSeeds = require('./profileSeeds.json');
+const { Wizard, Card, Spell } = require('../models');
+const wizardSeeds = require('./wizardSeeds.json');
 
 db.once('open', async () => {
   try {
-    await Profile.deleteMany({});
-    await Profile.create(profileSeeds);
+    await Wizard.deleteMany({});
+    await Wizard.create(wizardSeeds);
 
     console.log('all done!');
     process.exit(0);

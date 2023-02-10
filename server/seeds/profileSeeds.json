@@ -1,0 +1,8 @@
+[
+  {
+    "name": "Harry Potter",
+    "email": "harry@gmail.com",
+    "password": "test123",
+    "spells": ["Test1", "Test2"]
+  }
+]
