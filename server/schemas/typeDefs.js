@@ -6,6 +6,14 @@ const typeDefs = gql`
     name: String
     email: String
     password: String
+    spells: [Spell]
+  }
+
+  type Spell {
+    _id: ID!
+    name: String!
+    description: String!
+    cost: Int
   }
 
   type Auth {
@@ -17,15 +25,17 @@ const typeDefs = gql`
     wizards: [Wizard]!
     wizard(wizardId: ID!): Wizard
     me: Wizard
+    spells: [Spell]
+    spell(name: String!): Spell
   }
 
   type Mutation {
     addWizard(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
 
-    addSpell(wizardId: ID!, spell: String!): Wizard
+    addSpell(wizardId: ID!, name: String!): Wizard
     removeWizard: Wizard
-    removeSkill(spell: String!): Wizard
+    removeSpell(name: String!): Wizard
   }
 `;
 

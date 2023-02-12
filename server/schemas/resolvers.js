@@ -18,6 +18,12 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    spells: async () => {
+      return Spell.find();
+    },
+    spell: async (parent, { name }) => {
+      return Spell.findOne({ name });
+    },
   },
 
   Mutation: {
@@ -45,13 +51,13 @@ const resolvers = {
     },
 
     // Add a third argument to the resolver to access data in our `context`
-    addSpell: async (parent, { wizardId, spell }, context) => {
+    addSpell: async (parent, { wizardId, name }, context) => {
       // If context has a `user` property, that means the user executing this mutation has a valid JWT and is logged in
       if (context.user) {
         return Wizard.findOneAndUpdate(
           { _id: wizardId },
           {
-            $addToSet: { spells: spell },
+            $addToSet: { spells: name },
           },
           {
             new: true,
@@ -72,11 +78,11 @@ const resolvers = {
     },
 
     // Make it so a logged in user can only remove a spell from their own wizard
-    removeSpell: async (parent, { spell }, context) => {
+    removeSpell: async (parent, { name }, context) => {
       if (context.user) {
         return Wizard.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { spells: spell } },
+          { $pull: { spells: name } },
           { new: true }
         );
       }

@@ -6,6 +6,9 @@ const spellSchema = new Schema({
     },
     description: {
         type: String,
+    },
+    cost: {
+        type: Number,
     }
 })
 
