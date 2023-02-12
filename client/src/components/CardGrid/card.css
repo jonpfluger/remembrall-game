@@ -23,7 +23,7 @@ h1 {
 .container {
   height: 700px;
   width: 700px;
-  background-color: darkslateblue;
+  background-color: rgb(28, 24, 54);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
