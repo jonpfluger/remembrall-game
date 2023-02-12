@@ -52,7 +52,7 @@ function CardGrid() {
   const [prevSelection, setPrevSelection] = useState(-1);
 
   function check(current) {
-    if (cards[current].id == cards[prevSelection].id) {
+    if (cards[current].id === cards[prevSelection].id) {
       cards[current].stat = "correct";
       cards[prevSelection].stat = "correct";
       setCards([...cards]);
