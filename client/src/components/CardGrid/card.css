@@ -20,7 +20,7 @@ h1 {
   gap: 1em;
 }
 
-.card {
+.gridCard {
   background-color: rgb(93, 0, 93);
   display: flex;
   justify-content: center;
@@ -40,24 +40,24 @@ h1 {
   }
 }
 
-.card img {
+.gridCard img {
   max-width: 80%;
   max-height: 80%;
   transform: scale(0);
 }
 
-.card.active {
+.gridCard.active {
   transform: rotateY(0);
 }
 
-.card.correct {
+.gridCard.correct {
   background-color: silver;
 }
 
-.card.wrong {
+.gridCard.wrong {
   background-color: crimson;
 }
 
-.card.active img {
+.gridCard.active img {
   transform: scale(1);
 }
