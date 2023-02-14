@@ -1,35 +1,36 @@
 import { useState } from "react";
 import Card from "../Card/index";
-import '../CardGrid/card.css'
-import card1 from '../../img/HP Cards-1.png'
-import card2 from '../../img/HP Cards-2.png'
-import card3 from '../../img/HP Cards-3.png'
-import card4 from '../../img/HP Cards-4.png'
-import card5 from '../../img/HP Cards-5.png'
-import card6 from '../../img/HP Cards-6.png'
-import card7 from '../../img/HP Cards-7.png'
-import card8 from '../../img/HP Cards-8.png'
-import card9 from '../../img/HP Cards-9.png'
-import card10 from '../../img/HP Cards-10.png'
-import card11 from '../../img/HP Cards-11.png'
-import card12 from '../../img/HP Cards-12.png'
-import card13 from '../../img/HP Cards-13.png'
-import card14 from '../../img/HP Cards-14.png'
-import card15 from '../../img/HP Cards-15.png'
-import card16 from '../../img/HP Cards-16.png'
-import card17 from '../../img/HP Cards-17.png'
-import card18 from '../../img/HP Cards-18.png'
-import card19 from '../../img/HP Cards-19.png'
-import card20 from '../../img/HP Cards-20.png'
-import card21 from '../../img/HP Cards-21.png'
-import card22 from '../../img/HP Face Cards-21.png'
-import card23 from '../../img/HP Face Cards-22.png'
-import card24 from '../../img/HP Face Cards-23.png'
-import card25 from '../../img/HP Face Cards-24.png'
-import card26 from '../../img/HP Face Cards-25.png'
-import card27 from '../../img/HP Face Cards-26.png'
-import card28 from '../../img/HP Face Cards-27.png'
-import card29 from '../../img/HP Face Cards-28.png'
+import "../CardGrid/card.css";
+import card1 from "../../img/HP Cards-1.png";
+import card2 from "../../img/HP Cards-2.png";
+import card3 from "../../img/HP Cards-3.png";
+import card4 from "../../img/HP Cards-4.png";
+import card5 from "../../img/HP Cards-5.png";
+import card6 from "../../img/HP Cards-6.png";
+import card7 from "../../img/HP Cards-7.png";
+import card8 from "../../img/HP Cards-8.png";
+import card9 from "../../img/HP Cards-9.png";
+import card10 from "../../img/HP Cards-10.png";
+import card11 from "../../img/HP Cards-11.png";
+import card12 from "../../img/HP Cards-12.png";
+import card13 from "../../img/HP Cards-13.png";
+import card14 from "../../img/HP Cards-14.png";
+import card15 from "../../img/HP Cards-15.png";
+import card16 from "../../img/HP Cards-16.png";
+import card17 from "../../img/HP Cards-17.png";
+import card18 from "../../img/HP Cards-18.png";
+import card19 from "../../img/HP Cards-19.png";
+import card20 from "../../img/HP Cards-20.png";
+import card21 from "../../img/HP Cards-21.png";
+import card22 from "../../img/HP Face Cards-21.png";
+import card23 from "../../img/HP Face Cards-22.png";
+import card24 from "../../img/HP Face Cards-23.png";
+import card25 from "../../img/HP Face Cards-24.png";
+import card26 from "../../img/HP Face Cards-25.png";
+import card27 from "../../img/HP Face Cards-26.png";
+import card28 from "../../img/HP Face Cards-27.png";
+import card29 from "../../img/HP Face Cards-28.png";
+import card30 from "../../img/HP Face Cards-30.png";
 
 function CardGrid() {
   const [cards, setCards] = useState(
@@ -75,7 +76,6 @@ function CardGrid() {
       { id: 20, img: card20, stat: "" },
       { id: 20, img: card20, stat: "" },
       { id: 21, img: card21, stat: "" },
-      { id: 21, img: card21, stat: "" },
       { id: 22, img: card22, stat: "" },
       { id: 22, img: card22, stat: "" },
       { id: 23, img: card23, stat: "" },
@@ -87,11 +87,12 @@ function CardGrid() {
       { id: 26, img: card26, stat: "" },
       { id: 26, img: card26, stat: "" },
       { id: 27, img: card27, stat: "" },
-      { id: 27, img: card27, stat: "" },
       { id: 28, img: card28, stat: "" },
       { id: 28, img: card28, stat: "" },
       { id: 29, img: card29, stat: "" },
       { id: 29, img: card29, stat: "" },
+      { id: 30, img: card30, stat: "" },
+      { id: 30, img: card30, stat: "" },
     ].sort(() => Math.random() - 0.5)
   );
 
@@ -128,8 +129,8 @@ function CardGrid() {
 
   return (
     <div className="container">
-      {cards.map((gridCard, index) => (
-        <Card key={index} card={gridCard} id={index} handleClick={handleClick} />
+      {cards.map((card, index) => (
+        <Card key={index} card={card} id={index} handleClick={handleClick} />
       ))}
     </div>
   );
