@@ -43,23 +43,9 @@ const Wizard = () => {
   }
 
   return (
-    <div>
-      <h2 className="card-header">
-        {wizardId ? `${wizard.name}'s` : 'Your'} friends have endorsed these
-        spells...
-      </h2>
-
-      {wizard.spells?.length > 0 && (
-        <SpellList
-          spells={wizard.spells}
-          isLoggedInUser={!wizardId && true}
-        />
-      )}
-
-      <div className="my-4 p-4" style={{ border: '1px dotted #1a1a1a' }}>
-        <SpellForm wizardId={wizard._id} />
-      </div>
-    </div>
+    <main>
+      <h3>Wizard</h3>
+    </main>
   );
 };
 
