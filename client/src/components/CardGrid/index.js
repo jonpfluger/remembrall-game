@@ -30,10 +30,6 @@ import card26 from '../../img/HP Face Cards-25.png'
 import card27 from '../../img/HP Face Cards-26.png'
 import card28 from '../../img/HP Face Cards-27.png'
 import card29 from '../../img/HP Face Cards-28.png'
-import card30 from '../../img/HP Face Cards-30.png'
-
-
-
 
 function CardGrid() {
   const [cards, setCards] = useState(
@@ -79,6 +75,7 @@ function CardGrid() {
       { id: 20, img: card20, stat: "" },
       { id: 20, img: card20, stat: "" },
       { id: 21, img: card21, stat: "" },
+      { id: 21, img: card21, stat: "" },
       { id: 22, img: card22, stat: "" },
       { id: 22, img: card22, stat: "" },
       { id: 23, img: card23, stat: "" },
@@ -90,15 +87,11 @@ function CardGrid() {
       { id: 26, img: card26, stat: "" },
       { id: 26, img: card26, stat: "" },
       { id: 27, img: card27, stat: "" },
+      { id: 27, img: card27, stat: "" },
       { id: 28, img: card28, stat: "" },
       { id: 28, img: card28, stat: "" },
       { id: 29, img: card29, stat: "" },
       { id: 29, img: card29, stat: "" },
-      { id: 30, img: card30, stat: "" },
-      { id: 30, img: card30, stat: "" },
-
-
-
     ].sort(() => Math.random() - 0.5)
   );
 
@@ -135,8 +128,8 @@ function CardGrid() {
 
   return (
     <div className="container">
-      {cards.map((card, index) => (
-        <Card key={index} card={card} id={index} handleClick={handleClick} />
+      {cards.map((gridCard, index) => (
+        <Card key={index} card={gridCard} id={index} handleClick={handleClick} />
       ))}
     </div>
   );
