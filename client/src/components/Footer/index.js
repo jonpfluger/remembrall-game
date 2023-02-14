@@ -6,7 +6,7 @@ const Footer = () => {
   const navigate = useNavigate();
   return (
     <footer>
-      <h6>Footer</h6>
+      <h6>🧙‍♂️Built by Jon Pfluger, Jason Jones, Jennifer Kiesler, Christopher McLaughlin, and Megan Rakow🧙‍♀️</h6>
     </footer>
   );
 };

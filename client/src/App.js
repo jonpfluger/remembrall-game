@@ -13,7 +13,6 @@ import Wizard from './pages/Wizard';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Header from './components/Header';
-import CardGrid from './components/CardGrid';
 import Footer from './components/Footer';
 import Leaderboard from './components/Leaderboard';
 
@@ -69,7 +68,6 @@ function App() {
               element={<Leaderboard />}
             />
           </Routes>
-        <CardGrid />
         <Footer />
       </Router>
     </ApolloProvider>
