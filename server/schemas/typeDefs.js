@@ -36,7 +36,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
 
     addSpell(wizardId: ID!, name: String!): Wizard
-    removeSpell(name: String!): Wizard
+    removeSpell(wizardId: ID!, name: String!): Wizard
   }
 `;
 

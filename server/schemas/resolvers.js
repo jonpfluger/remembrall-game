@@ -64,14 +64,17 @@ const resolvers = {
         
         return wizard
     },
-    removeSpell: async (parent, { name }, context) => {
-      if (context.user) {
-        return Wizard.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { spells: name } },
-          { new: true }
-        );
-      }
+    removeSpell: async (parent, { wizardId, name }, context) => {
+      console.log(wizardId, name)
+      const spell = await Spell.findOne({name})
+      console.log(spell)
+      const wizard = await Wizard.findOneAndUpdate(
+        { _id: wizardId },
+        { $pull: { spells: spell._id } },
+        { new: true }
+      ).populate('spells');
+      console.log(wizard)
+      return wizard
     },
   },
 };
