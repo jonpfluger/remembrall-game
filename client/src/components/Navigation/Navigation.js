@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../img/logo.png";
-console.log(logo);
 
 function Navigation() {
   return (
     <nav
-      className="navbar navbar-expand-lg"
+      className="navbar navbar-dark navbar-expand-lg"
       style={{ backgroundColor: "#0e1a40" }}
     >
       <div className="container-fluid">
