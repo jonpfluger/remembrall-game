@@ -3,5 +3,15 @@
     "name": "Harry Potter",
     "email": "harry@gmail.com",
     "password": "test123"
+  },
+  {
+    "name": "Ron Weasley",
+    "email": "ron@gmail.com",
+    "password": "test123"
+  },
+  {
+    "name": "Hermione Granger",
+    "email": "hermione@gmail.com",
+    "password": "test123"
   }
 ]

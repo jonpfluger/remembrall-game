@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import Navigation from '../Navigation/Navigation'
-import Auth from '../../utils/auth';
+import Navigation from "../Navigation/Navigation";
+import Auth from "../../utils/auth";
 
 const Header = () => {
   const logout = (event) => {
@@ -11,7 +11,6 @@ const Header = () => {
   };
   return (
     <header>
-      <h1>Remembrall</h1>
       <Navigation />
     </header>
   );
