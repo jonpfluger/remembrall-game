@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 
-import WizardList from '../components/WizardList';
+import CardGrid from '../components/CardGrid'
 
 import { QUERY_WIZARDS } from '../utils/queries';
 
@@ -12,6 +12,7 @@ const Home = () => {
   return (
     <main>
       <h3>Home</h3>
+      <CardGrid />
     </main>
   );
 };
