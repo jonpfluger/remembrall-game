@@ -1,7 +1,7 @@
 const Leaderboard = () => {
     return (
         <div>
-            <h1>Leaderboard</h1>
+            <h2>Leaderboard</h2>
         </div>
     )
 }

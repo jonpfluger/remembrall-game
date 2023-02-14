@@ -11,18 +11,7 @@ const Home = () => {
 
   return (
     <main>
-      <div className="flex-row justify-center">
-        <div className="col-12 col-md-10 my-3">
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <WizardList
-              wizards={wizards}
-              title="Here's the current roster of friends..."
-            />
-          )}
-        </div>
-      </div>
+      <h3>Home</h3>
     </main>
   );
 };
