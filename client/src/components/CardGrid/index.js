@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Card from "../Card/index";
 import "../CardGrid/card.css";
 import card1 from "../../img/HP Cards-1.png";
@@ -21,16 +21,15 @@ import card17 from "../../img/HP Cards-17.png";
 import card18 from "../../img/HP Cards-18.png";
 import card19 from "../../img/HP Cards-19.png";
 import card20 from "../../img/HP Cards-20.png";
-import card21 from "../../img/HP Cards-21.png";
-import card22 from "../../img/HP Face Cards-21.png";
-import card23 from "../../img/HP Face Cards-22.png";
-import card24 from "../../img/HP Face Cards-23.png";
-import card25 from "../../img/HP Face Cards-24.png";
-import card26 from "../../img/HP Face Cards-25.png";
-import card27 from "../../img/HP Face Cards-26.png";
-import card28 from "../../img/HP Face Cards-27.png";
-import card29 from "../../img/HP Face Cards-28.png";
-import card30 from "../../img/HP Face Cards-30.png";
+import card21 from "../../img/HP Face Cards-21.png";
+import card22 from "../../img/HP Face Cards-22.png";
+import card23 from "../../img/HP Face Cards-23.png";
+import card24 from "../../img/HP Face Cards-24.png";
+import card25 from "../../img/HP Face Cards-25.png";
+import card26 from "../../img/HP Face Cards-26.png";
+import card27 from "../../img/HP Face Cards-27.png";
+import card28 from "../../img/HP Face Cards-28.png";
+import card29 from "../../img/HP Face Cards-30.png";
 
 function CardGrid() {
   const [cards, setCards] = useState(
@@ -76,6 +75,7 @@ function CardGrid() {
       { id: 20, img: card20, stat: "" },
       { id: 20, img: card20, stat: "" },
       { id: 21, img: card21, stat: "" },
+      { id: 21, img: card21, stat: "" },
       { id: 22, img: card22, stat: "" },
       { id: 22, img: card22, stat: "" },
       { id: 23, img: card23, stat: "" },
@@ -87,23 +87,33 @@ function CardGrid() {
       { id: 26, img: card26, stat: "" },
       { id: 26, img: card26, stat: "" },
       { id: 27, img: card27, stat: "" },
+      { id: 27, img: card27, stat: "" },
       { id: 28, img: card28, stat: "" },
       { id: 28, img: card28, stat: "" },
       { id: 29, img: card29, stat: "" },
       { id: 29, img: card29, stat: "" },
-      { id: 30, img: card30, stat: "" },
-      { id: 30, img: card30, stat: "" },
     ].sort(() => Math.random() - 0.5)
   );
-
+  const [openedCards, setOpenedCards] = useState(0)
   const [prevSelection, setPrevSelection] = useState(-1);
-
+  
+  // const isClickable = true;
+  // function cardClicked(elCard) {
+  //   if (!isClickable) return;
+  //   isClickable = false;
+  //   setTimeout(function () {
+  //     isClickable = true;
+  //   }, 500)
+  
+  
   function check(current) {
+    
     if (cards[current].id === cards[prevSelection].id) {
       cards[current].stat = "correct";
       cards[prevSelection].stat = "correct";
       setCards([...cards]);
       setPrevSelection(-1);
+      
     } else {
       cards[current].stat = "wrong";
       cards[prevSelection].stat = "wrong";
@@ -117,62 +127,38 @@ function CardGrid() {
     }
   }
 
+
+  
   function handleClick(id) {
+    console.log(openedCards)
+    if (openedCards === 2) {
+      setTimeout(function(){
+      setOpenedCards(0)
+      }, 1200)
+      return
+    }
+    setOpenedCards(openedCards +1)
     if (prevSelection === -1) {
       cards[id].stat = "active";
       setCards([...cards]);
       setPrevSelection(id);
+      
+      
+      
+
+
     } else {
       check(id);
     }
   }
-
-  const [seconds, setSeconds] = useState(0);
-  const [isActive, setActive] = useState(false);
-  const [game, setGame] = useState(false);
-
-  useEffect(() => {
-    let timer = null;
-    if (isActive) {
-      timer = setInterval(() => {
-        setSeconds((seconds) => seconds + 1);
-      }, 1000);
-    }
-    return () => {
-      clearInterval(timer);
-    };
-  });
-
+  
+  
   return (
-    <>
-      <div className="row text-center">
-        <div className="col-lg-6 mb-4">
-          <button
-            onClick={() => {
-              setActive(true);
-              setGame(true);
-            }}
-            className="btn btn-primary"
-          >
-            New Game
-          </button>
-          <p className="text-white pt-3"> Seconds: {seconds}</p>
-        </div>
-      </div>
-
-      <div className="container">
-        {game
-          ? cards.map((card, index) => (
-              <Card
-                key={index}
-                card={card}
-                id={index}
-                handleClick={handleClick}
-              />
-            ))
-          : null}
-      </div>
-    </>
+    <div className="container">
+      {cards.map((card, index) => (
+        <Card key={index} card={card} id={index} handleClick={handleClick} />
+      ))}
+    </div>
   );
 }
-export default CardGrid;
+export default CardGrid
