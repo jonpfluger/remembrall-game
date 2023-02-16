@@ -132,7 +132,7 @@ function CardGrid() {
   const [game, setGame] = useState(false);
 
   useEffect(() => {
-    let timer = null;
+    let timer
     if (isActive) {
       timer = setInterval(() => {
         setSeconds((seconds) => seconds + 1);
