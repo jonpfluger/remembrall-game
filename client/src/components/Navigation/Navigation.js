@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../img/logo.png";
 
+import Auth from '../../utils/auth'
+
 function Navigation() {
+
+  const [showModal, setShowModal] = useState(false)
+
   return (
     <nav
       className="navbar navbar-dark navbar-expand-lg"
@@ -37,9 +42,14 @@ function Navigation() {
             <Link className="nav-link active text-white" to="/">
               Home
             </Link>
-            <Link className="nav-link text-white" to="/login">
-              Login
-            </Link>
+            {/* if user is logged in show logout */}
+            {Auth.loggedIn() ? (
+              <>
+                <Link className="nav-link text-white" onClick={Auth.logout}>Logout</Link>
+              </>
+            ) : (
+              <Link className="nav-link text-white" to="/login"onClick={() => setShowModal(true)}>Login</Link>
+            )}
             <Link className="nav-link text-white" to="/signup">
               Signup
             </Link>
