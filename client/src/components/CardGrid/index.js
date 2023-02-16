@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 import Card from "../Card/index";
 import "../CardGrid/card.css";
 import card1 from "../../img/HP Cards-1.png";
@@ -30,6 +31,10 @@ import card26 from "../../img/HP Face Cards-26.png";
 import card27 from "../../img/HP Face Cards-27.png";
 import card28 from "../../img/HP Face Cards-28.png";
 import card29 from "../../img/HP Face Cards-30.png";
+
+
+
+
 
 function CardGrid() {
   const [cards, setCards] = useState(
@@ -127,16 +132,15 @@ function CardGrid() {
     }
   }
 
-
-  
   function handleClick(id) {
     console.log(openedCards)
     if (openedCards === 2) {
       setTimeout(function(){
       setOpenedCards(0)
-      }, 1200)
+      }, 500)
       return
     }
+    
     setOpenedCards(openedCards +1)
     if (prevSelection === -1) {
       cards[id].stat = "active";
@@ -152,13 +156,52 @@ function CardGrid() {
     }
   }
   
+  const [seconds, setSeconds] = useState(0);
+const [isActive, setActive] = useState(false);
+const [game, setGame] = useState(false);
+
+useEffect(() => {
+  let timer = null;
+  if (isActive) {
+    timer = setInterval(() => {
+      setSeconds((seconds) => seconds + 1);
+    }, 1000);
+  }
+  return () => {
+    clearInterval(timer);
+  };
+});
   
   return (
-    <div className="container">
-      {cards.map((card, index) => (
-        <Card key={index} card={card} id={index} handleClick={handleClick} />
-      ))}
-    </div>
+    <>
+      <div className="row text-center">
+        <div className="col-lg-6 mb-4">
+          <button
+            onClick={() => {
+              setActive(true);
+              setGame(true);
+            }}
+            className="btn btn-primary"
+          >
+            New Game
+          </button>
+          <p className="text-white pt-3"> Seconds: {seconds}</p>
+        </div>
+      </div>
+
+      <div className="container">
+        {game
+          ? cards.map((card, index) => (
+              <Card
+                key={index}
+                card={card}
+                id={index}
+                handleClick={handleClick}
+              />
+            ))
+          : null}
+      </div>
+    </>
   );
 }
 export default CardGrid
