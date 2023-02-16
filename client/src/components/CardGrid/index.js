@@ -32,10 +32,6 @@ import card27 from "../../img/HP Face Cards-27.png";
 import card28 from "../../img/HP Face Cards-28.png";
 import card29 from "../../img/HP Face Cards-30.png";
 
-
-
-
-
 function CardGrid() {
   const [cards, setCards] = useState(
     [
@@ -110,9 +106,7 @@ function CardGrid() {
   //     isClickable = true;
   //   }, 500)
   
-  
   function check(current) {
-    
     if (cards[current].id === cards[prevSelection].id) {
       cards[current].stat = "correct";
       cards[prevSelection].stat = "correct";
@@ -146,31 +140,26 @@ function CardGrid() {
       cards[id].stat = "active";
       setCards([...cards]);
       setPrevSelection(id);
-      
-      
-      
-
-
     } else {
       check(id);
     }
   }
   
   const [seconds, setSeconds] = useState(0);
-const [isActive, setActive] = useState(false);
-const [game, setGame] = useState(false);
+  const [isActive, setActive] = useState(false);
+  const [game, setGame] = useState(false);
 
-useEffect(() => {
-  let timer = null;
-  if (isActive) {
-    timer = setInterval(() => {
-      setSeconds((seconds) => seconds + 1);
-    }, 1000);
-  }
-  return () => {
-    clearInterval(timer);
-  };
-});
+  useEffect(() => {
+    let timer = null;
+    if (isActive) {
+      timer = setInterval(() => {
+        setSeconds((seconds) => seconds + 1);
+      }, 1000);
+    }
+    return () => {
+      clearInterval(timer);
+    };
+  });
   
   return (
     <>
@@ -204,4 +193,5 @@ useEffect(() => {
     </>
   );
 }
+
 export default CardGrid
