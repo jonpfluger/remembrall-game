@@ -1,5 +1,5 @@
 function Card({ card, index, handleClick }) {
-  const cardClass = card.stat ? " active " : "";
+  const cardClass = card.stat ? " active " + card.stat : "";
 
   return (
     <div className={"gridCard" + cardClass} onClick={() => handleClick(index)}>
