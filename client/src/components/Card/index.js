@@ -1,8 +1,8 @@
-function Card({ card, id, handleClick }) {
-  const cardClass = card.stat ? " active " + card.stat : "";
+function Card({ card, index, handleClick }) {
+  const cardClass = card.stat ? " active " : "";
 
   return (
-    <div className={"gridCard" + cardClass} onClick={() => handleClick(id)}>
+    <div className={"gridCard" + cardClass} onClick={() => handleClick(index)}>
       <img src={card.img} alt={card.id} />
     </div>
   );
