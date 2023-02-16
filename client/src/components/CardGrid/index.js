@@ -33,68 +33,39 @@ import card28 from "../../img/HP Face Cards-28.png";
 import card29 from "../../img/HP Face Cards-30.png";
 
 function CardGrid() {
-  const [cards, setCards] = useState(
-    [
-      { id: 1, img: card1, stat: "" },
-      { id: 1, img: card1, stat: "" },
-      { id: 2, img: card2, stat: "" },
-      { id: 2, img: card2, stat: "" },
-      { id: 3, img: card3, stat: "" },
-      { id: 3, img: card3, stat: "" },
-      { id: 4, img: card4, stat: "" },
-      { id: 4, img: card4, stat: "" },
-      { id: 5, img: card5, stat: "" },
-      { id: 5, img: card5, stat: "" },
-      { id: 6, img: card6, stat: "" },
-      { id: 6, img: card6, stat: "" },
-      { id: 7, img: card7, stat: "" },
-      { id: 7, img: card7, stat: "" },
-      { id: 8, img: card8, stat: "" },
-      { id: 8, img: card8, stat: "" },
-      { id: 9, img: card9, stat: "" },
-      { id: 9, img: card9, stat: "" },
-      { id: 10, img: card10, stat: "" },
-      { id: 10, img: card10, stat: "" },
-      { id: 11, img: card11, stat: "" },
-      { id: 11, img: card11, stat: "" },
-      { id: 12, img: card12, stat: "" },
-      { id: 12, img: card12, stat: "" },
-      { id: 13, img: card13, stat: "" },
-      { id: 13, img: card13, stat: "" },
-      { id: 14, img: card14, stat: "" },
-      { id: 14, img: card14, stat: "" },
-      { id: 15, img: card15, stat: "" },
-      { id: 15, img: card15, stat: "" },
-      { id: 16, img: card16, stat: "" },
-      { id: 16, img: card16, stat: "" },
-      { id: 17, img: card17, stat: "" },
-      { id: 17, img: card17, stat: "" },
-      { id: 18, img: card18, stat: "" },
-      { id: 18, img: card18, stat: "" },
-      { id: 19, img: card19, stat: "" },
-      { id: 19, img: card19, stat: "" },
-      { id: 20, img: card20, stat: "" },
-      { id: 20, img: card20, stat: "" },
-      { id: 21, img: card21, stat: "" },
-      { id: 21, img: card21, stat: "" },
-      { id: 22, img: card22, stat: "" },
-      { id: 22, img: card22, stat: "" },
-      { id: 23, img: card23, stat: "" },
-      { id: 23, img: card23, stat: "" },
-      { id: 24, img: card24, stat: "" },
-      { id: 24, img: card24, stat: "" },
-      { id: 25, img: card25, stat: "" },
-      { id: 25, img: card25, stat: "" },
-      { id: 26, img: card26, stat: "" },
-      { id: 26, img: card26, stat: "" },
-      { id: 27, img: card27, stat: "" },
-      { id: 27, img: card27, stat: "" },
-      { id: 28, img: card28, stat: "" },
-      { id: 28, img: card28, stat: "" },
-      { id: 29, img: card29, stat: "" },
-      { id: 29, img: card29, stat: "" },
-    ].sort(() => Math.random() - 0.5)
-  );
+  const allCards = [
+    { id: 1, img: card1, stat: "" },
+    { id: 2, img: card2, stat: "" },
+    { id: 3, img: card3, stat: "" },
+    { id: 4, img: card4, stat: "" },
+    { id: 5, img: card5, stat: "" },
+    { id: 6, img: card6, stat: "" },
+    { id: 7, img: card7, stat: "" },
+    { id: 8, img: card8, stat: "" },
+    { id: 9, img: card9, stat: "" },
+    { id: 10, img: card10, stat: "" },
+    { id: 11, img: card11, stat: "" },
+    { id: 12, img: card12, stat: "" },
+    { id: 13, img: card13, stat: "" },
+    { id: 14, img: card14, stat: "" },
+    { id: 15, img: card15, stat: "" },
+    { id: 16, img: card16, stat: "" },
+    { id: 17, img: card17, stat: "" },
+    { id: 18, img: card18, stat: "" },
+    { id: 19, img: card19, stat: "" },
+    { id: 20, img: card20, stat: "" },
+    { id: 21, img: card21, stat: "" },
+    { id: 22, img: card22, stat: "" },
+    { id: 23, img: card23, stat: "" },
+    { id: 24, img: card24, stat: "" },
+    { id: 25, img: card25, stat: "" },
+    { id: 26, img: card26, stat: "" },
+    { id: 27, img: card27, stat: "" },
+    { id: 28, img: card28, stat: "" },
+    { id: 29, img: card29, stat: "" },
+  ]
+
+  const [cards, setCards] = useState(allCards);
   const [openedCards, setOpenedCards] = useState(0)
   const [prevSelection, setPrevSelection] = useState(-1);
   
@@ -144,6 +115,22 @@ function CardGrid() {
       check(id);
     }
   }
+
+  function newGame() {
+    const newCards = []
+  
+    while (newCards.length < 16) {
+      let newCard = allCards[Math.floor(Math.random() * allCards.length)]
+      if (!newCards.includes(newCard)) {
+        console.log(newCard)
+        newCards.push(newCard)
+        newCards.push(newCard)
+      }
+    }
+    newCards.sort(() => Math.random() - 0.5)
+    console.log(newCards)
+    setCards(newCards)
+  }
   
   const [seconds, setSeconds] = useState(0);
   const [isActive, setActive] = useState(false);
@@ -169,6 +156,7 @@ function CardGrid() {
             onClick={() => {
               setActive(true);
               setGame(true);
+              newGame()
             }}
             className="btn btn-primary"
           >
