@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 
-import { Navigate, useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import { Navigate, useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
 
-import SpellList from '../components/SpellList';
-import SpellForm from '../components/SpellForm';
+import SpellList from "../components/SpellList";
+import SpellForm from "../components/SpellForm";
 
-import { QUERY_SINGLE_WIZARD, QUERY_ME } from '../utils/queries';
+import { QUERY_SINGLE_WIZARD, QUERY_ME } from "../utils/queries";
 
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 
 const Wizard = () => {
   const { wizardId } = useParams();
@@ -35,7 +35,7 @@ const Wizard = () => {
 
   if (!wizard?.name) {
     return (
-      <h4 className='text-light text-center'>
+      <h4 className="text-white text-center">
         You need to be logged in to see your wizard page. Use the navigation
         links above to sign up or log in!
       </h4>
