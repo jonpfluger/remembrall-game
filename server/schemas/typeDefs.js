@@ -11,8 +11,10 @@ const typeDefs = gql`
 
   type Spell {
     _id: ID!
-    name: String!
-    description: String!
+    spellId: ID
+    name: String
+    description: String
+    img: String
     cost: Int
   }
 
@@ -34,8 +36,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
 
     addSpell(wizardId: ID!, name: String!): Wizard
-    removeWizard: Wizard
-    removeSpell(name: String!): Wizard
+    removeSpell(wizardId: ID!, name: String!): Wizard
   }
 `;
 

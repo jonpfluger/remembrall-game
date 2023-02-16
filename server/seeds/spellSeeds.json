@@ -1,0 +1,14 @@
+[
+  {
+    "spellId": 1,
+    "name": "Accio",
+    "description": "Summons the card that matches the card recently flipped.",
+    "cost": 5
+  },
+  {
+    "spellId": 2,
+    "name": "Revelio",
+    "description": "Reveals a random match.",
+    "cost": 10
+  }
+]

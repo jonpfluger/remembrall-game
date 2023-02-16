@@ -1,45 +1,63 @@
 import { gql } from '@apollo/client';
 
 export const ADD_WIZARD = gql`
-  mutation addWizard($name: String!, $email: String!, $password: String!) {
+  mutation ADD_WIZARD($name: String!, $email: String!, $password: String!) {
     addWizard(name: $name, email: $email, password: $password) {
       token
       wizard {
         _id
         name
+        email
       }
     }
   }
 `;
 
 export const ADD_SPELL = gql`
-  mutation addSpell($wizardId: ID!, $spell: String!) {
-    addSpell(wizardId: $wizardId, spell: $spell) {
+  mutation ADD_SPELL($wizardId: ID!, $name: String!) {
+    addSpell(wizardId: $wizardId, name: $name) {
       _id
       name
-      spells
+      email
+      password
+      spells {
+        _id
+        spellId
+        name
+        description
+        cost
+        quantity
+      }
     }
   }
 `;
 
 export const LOGIN_USER = gql`
-  mutation login($email: String!, $password: String!) {
+  mutation LOGIN($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       token
       wizard {
         _id
         name
+        email
       }
     }
   }
 `;
 
 export const REMOVE_SPELL = gql`
-  mutation removeSpell($spell: String!) {
-    removeSpell(spell: $spell) {
+  mutation REMOVE_SPELL($wizardId: ID!, $name: String!) {
+    removeSpell(wizardId: $wizardId, name: $name) {
       _id
       name
-      spells
+      email
+      spells {
+        _id
+        spellId
+        name
+        description
+        cost
+      }
     }
   }
 `;

@@ -10,11 +10,10 @@ function Navigation() {
     >
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
-          <image
+          <img
             src={logo}
             alt="Logo"
-            width="30"
-            height="24"
+            width="125px"
             className="d-inline-block align-text-top"
           />
         </a>

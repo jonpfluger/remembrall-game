@@ -5,11 +5,11 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
     wizards: async () => {
-      return Wizard.find();
+      return Wizard.find().populate('spells');
     },
 
     wizard: async (parent, { wizardId }) => {
-      return Wizard.findOne({ _id: wizardId });
+      return Wizard.findOne({ _id: wizardId }).populate('spells');
     },
     // By adding context to our query, we can retrieve the logged in user without specifically searching for them
     me: async (parent, args, context) => {
@@ -49,44 +49,32 @@ const resolvers = {
       const token = signToken(wizard);
       return { token, wizard };
     },
-
-    // Add a third argument to the resolver to access data in our `context`
     addSpell: async (parent, { wizardId, name }, context) => {
-      // If context has a `user` property, that means the user executing this mutation has a valid JWT and is logged in
-      if (context.user) {
-        return Wizard.findOneAndUpdate(
+        const spell = await Spell.findOne({name})
+       
+        const wizard = await Wizard.findOneAndUpdate(
           { _id: wizardId },
           {
-            $addToSet: { spells: name },
+            $push: { spells: spell._id },
           },
           {
             new: true,
-            runValidators: true,
           }
-        );
-      }
-      // If user attempts to execute this mutation and isn't logged in, throw an error
-      throw new AuthenticationError('You need to be logged in!');
+        ).populate('spells');
+        
+        return wizard
     },
-
-    // Set up mutation so a logged in user can only remove their wizard and no one else's
-    removeWizard: async (parent, args, context) => {
-      if (context.user) {
-        return Wizard.findOneAndDelete({ _id: context.user._id });
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-
-    // Make it so a logged in user can only remove a spell from their own wizard
-    removeSpell: async (parent, { name }, context) => {
-      if (context.user) {
-        return Wizard.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { spells: name } },
-          { new: true }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
+    removeSpell: async (parent, { wizardId, name }, context) => {
+      console.log(wizardId, name)
+      const spell = await Spell.findOne({name})
+      console.log(spell)
+      const wizard = await Wizard.findOneAndUpdate(
+        { _id: wizardId },
+        { $pull: { spells: spell._id } },
+        { new: true }
+      ).populate('spells');
+      console.log(wizard)
+      return wizard
     },
   },
 };
