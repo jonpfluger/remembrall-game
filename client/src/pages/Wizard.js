@@ -35,7 +35,7 @@ const Wizard = () => {
 
   if (!wizard?.name) {
     return (
-      <h4>
+      <h4 className='text-light text-center'>
         You need to be logged in to see your wizard page. Use the navigation
         links above to sign up or log in!
       </h4>
