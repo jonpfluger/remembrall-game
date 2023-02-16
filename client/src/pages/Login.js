@@ -42,7 +42,7 @@ const Login = (props) => {
 
   return (
     <main className="flex-row justify-center px-3 py-4 p-lg-5">
-      <div className="col-12">
+      <div className="col-12 col-lg-10">
         <div className="card" style={{ backgroundColor: "#bebebe" }}>
           <h4
             className="card-header  text-light p-2"
