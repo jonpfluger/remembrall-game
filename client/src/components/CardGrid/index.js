@@ -70,15 +70,6 @@ function CardGrid() {
   const [openedCards, setOpenedCards] = useState(0)
   const [prevSelection, setPrevSelection] = useState(-1);
   
-  // const isClickable = true;
-  // function cardClicked(elCard) {
-  //   if (!isClickable) return;
-  //   isClickable = false;
-  //   setTimeout(function () {
-  //     isClickable = true;
-  //   }, 500)
-  
-  
   function check(current) {
     
     if (cards[current].id === cards[prevSelection].id) {
@@ -100,8 +91,8 @@ function CardGrid() {
     }
   }
 
-  function handleClick(id) {
-    console.log(openedCards)
+  function handleClick(index) {
+  
     if (openedCards === 2) {
       setTimeout(function(){
       setOpenedCards(0)
@@ -110,17 +101,14 @@ function CardGrid() {
     }
     
     setOpenedCards(openedCards +1)
+
     if (prevSelection === -1) {
-      cards[id].stat = "active";
+      cards[index].stat = "active";
       setCards([...cards]);
-      setPrevSelection(id);
-      
-      
-      
-
-
+      setPrevSelection(index);
+     
     } else {
-      check(id);
+      check(index);
     }
   }
 
@@ -132,7 +120,7 @@ function CardGrid() {
       if (!newCards.includes(newCard)) {
         console.log(newCard)
         newCards.push(newCard)
-        newCards.push(newCard)
+        newCards.push({...newCard})
       }
     }
     newCards.sort(() => Math.random() - 0.5)
@@ -180,7 +168,7 @@ function CardGrid() {
               <Card
                 key={index}
                 card={card}
-                id={index}
+                index={index}
                 handleClick={handleClick}
               />
             ))
