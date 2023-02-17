@@ -14,7 +14,7 @@ const resolvers = {
     // By adding context to our query, we can retrieve the logged in user without specifically searching for them
     me: async (parent, args, context) => {
       if (context.user) {
-        return await Wizard.findOne({ _id: context.user._id });
+        return await Wizard.findOne({ _id: context.user._id }).populate('spells');
       }
       throw new AuthenticationError('You need to be logged in!');
     },
@@ -55,14 +55,14 @@ const resolvers = {
         const wizard = await Wizard.findOneAndUpdate(
           { _id: wizardId },
           {
-            $push: { spells: spell._id },
+            $addToSet: { spells: spell._id },
           },
           {
             new: true,
           }
-        ).populate('spells');
+        );
         
-        return wizard
+        return wizard.populate('spells')
     },
     removeSpell: async (parent, { wizardId, name }, context) => {
       console.log(wizardId, name)
@@ -72,9 +72,9 @@ const resolvers = {
         { _id: wizardId },
         { $pull: { spells: spell._id } },
         { new: true }
-      ).populate('spells');
+      );
       console.log(wizard)
-      return wizard
+      return wizard.populate('spells')
     },
     updateScore: async (parent, args, context) => {
       const wizard = await Wizard.findOneAndUpdate(
@@ -83,7 +83,7 @@ const resolvers = {
         { new: true }
       )
       console.log(wizard)
-      return wizard
+      return wizard.populate('spells')
     },
   },
 };
