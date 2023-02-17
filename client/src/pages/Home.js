@@ -5,11 +5,12 @@ import { useMutation } from "@apollo/client";
 
 import CardGrid from "../components/CardGrid";
 
-import { QUERY_WIZARDS } from "../utils/queries";
+import { QUERY_ME } from "../utils/queries";
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_WIZARDS);
-  const wizards = data?.wizards || [];
+  const { loading, data } = useQuery(QUERY_ME);
+  const wizard = data?.me || [];
+  console.log(wizard)
 
   //set up for querying name
 
@@ -20,7 +21,7 @@ const Home = () => {
   return (
     <main>
       <h3 className="text-center px-3 py-4 text-white">
-        Welcome Back (Wizard Name Here){" "}
+        Welcome {wizard.name}
       </h3>
       <CardGrid />
     </main>
