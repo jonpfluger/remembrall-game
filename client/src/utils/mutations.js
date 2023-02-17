@@ -61,3 +61,13 @@ export const REMOVE_SPELL = gql`
     }
   }
 `;
+
+export const UPDATE_SCORE = gql`
+  mutation UPDATE_SCORE($score: Int, $wizardId: ID!) {
+    updateScore(score: $score, wizardId: $wizardId) {
+      _id
+      name
+      score
+    }
+  }
+`;

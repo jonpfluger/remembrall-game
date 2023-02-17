@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { useQuery, useMutation } from "@apollo/client"
 
 import Auth from "../../utils/auth"
-import { Link } from 'react-router-dom'
+import { QUERY_ME } from "../../utils/queries"
+import { UPDATE_SCORE } from "../../utils/mutations"
 
 import Card from "../Card/index";
 import "../CardGrid/card.css";
@@ -34,7 +36,6 @@ import card26 from "../../img/HP Face Cards-26.png";
 import card27 from "../../img/HP Face Cards-27.png";
 import card28 from "../../img/HP Face Cards-28.png";
 import card29 from "../../img/HP Face Cards-30.png";
-import auth from "../../utils/auth";
 
 
 function CardGrid() {
@@ -74,6 +75,12 @@ function CardGrid() {
   const [openedCards, setOpenedCards] = useState(0)
   const [prevSelection, setPrevSelection] = useState(-1);
   const [showModal, setShowModal] = useState(false)
+
+  const {loading, data} = useQuery(QUERY_ME)
+  const wizard = data?.me || {}
+  console.log(wizard)
+
+  const [ updateScore ] = useMutation(UPDATE_SCORE)
 
   function check(current) {
 
