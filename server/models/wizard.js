@@ -19,6 +19,9 @@ const wizardSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  score: {
+    type: Number
+  },
   spells: [
     {
       type: Schema.Types.ObjectId,

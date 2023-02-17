@@ -6,6 +6,7 @@ const Leaderboard = () => {
     
     const {loading, data} = useQuery(QUERY_WIZARDS)
     const wizardData = data?.wizards || []
+    console.log(wizardData)
 
     return (
         <main className="flex-row justify-center px-3 py-4 p-lg-5">
@@ -19,7 +20,7 @@ const Leaderboard = () => {
                     </h4>
                     <div className="card-body">
                         <ol>
-                            {wizardData.map(wizard => <li className="m-2 p-2" key={wizard._id}>{wizard.name} | Score goes here </li>) /* .sort((a, b) => a.props.children[2] > b.props.children[2])} */}
+                            {wizardData.map(wizard => <li className="m-2 p-2" key={wizard._id}>{wizard.name} | {wizard.score} </li>).sort((a,b) => a.props.children[2]-b.props.children[2])}
                         </ol>
                     </div>
                 </div>

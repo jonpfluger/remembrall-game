@@ -6,6 +6,7 @@ const typeDefs = gql`
     name: String
     email: String
     password: String
+    score: Int
     spells: [Spell]
   }
 
@@ -37,6 +38,8 @@ const typeDefs = gql`
 
     addSpell(wizardId: ID!, name: String!): Wizard
     removeSpell(wizardId: ID!, name: String!): Wizard
+
+    updateScore(score: Int, wizardId: ID!): Wizard
   }
 `;
 

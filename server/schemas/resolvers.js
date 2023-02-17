@@ -76,6 +76,15 @@ const resolvers = {
       console.log(wizard)
       return wizard
     },
+    updateScore: async (parent, args, context) => {
+      const wizard = await Wizard.findOneAndUpdate(
+        { _id: args.wizardId },
+        { $set: { score: args.score } },
+        { new: true }
+      )
+      console.log(wizard)
+      return wizard
+    },
   },
 };
 

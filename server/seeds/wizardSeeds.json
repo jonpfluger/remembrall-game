@@ -2,16 +2,19 @@
   {
     "name": "Harry Potter",
     "email": "harry@gmail.com",
-    "password": "test123"
+    "password": "test123",
+    "score": 60
   },
   {
     "name": "Ron Weasley",
     "email": "ron@gmail.com",
-    "password": "test123"
+    "password": "test123",
+    "score": 80
   },
   {
     "name": "Hermione Granger",
     "email": "hermione@gmail.com",
-    "password": "test123"
+    "password": "test123",
+    "score": 20
   }
 ]
