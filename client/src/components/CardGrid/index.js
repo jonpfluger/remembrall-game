@@ -79,7 +79,6 @@ function CardGrid() {
 
   const {loading, data} = useQuery(QUERY_ME)
   const wizard = data?.me || {}
-  console.log(wizard)
 
   const [ updateScore ] = useMutation(UPDATE_SCORE)
 
@@ -168,6 +167,19 @@ function CardGrid() {
 
     if (matches === 8) {
       clearInterval(timer)
+
+      if (wizard.score > seconds) {
+        updateScore({
+          variables: {
+            wizardId: wizard._id,
+            score: seconds
+          }
+        })
+      }
+
+      setTimeout(function () {
+        window.location.replace("/leaderboard")
+      }, 2000)
     }
 
     return () => {

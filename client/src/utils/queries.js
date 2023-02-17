@@ -7,6 +7,7 @@ export const QUERY_WIZARDS = gql`
       name
       email
       password
+      score
       spells {
         _id
         spellId
@@ -26,6 +27,7 @@ export const QUERY_SINGLE_WIZARD = gql`
       name
       email
       password
+      score
       spells {
         spellId
         name
@@ -43,6 +45,7 @@ export const QUERY_ME = gql`
       name
       email
       password
+      score
     }
   }
 `;
