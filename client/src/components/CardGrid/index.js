@@ -73,16 +73,20 @@ function CardGrid() {
   const [cards, setCards] = useState(allCards);
   const [openedCards, setOpenedCards] = useState(0)
   const [prevSelection, setPrevSelection] = useState(-1);
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false);
+  const [matches, setMatches] = useState(0)
 
   function check(current) {
 
-    if (cards[current].id === cards[prevSelection].id) {
+    if (cards[current].id === cards[prevSelection].id && current !== prevSelection) {
       cards[current].stat = "correct";
       cards[prevSelection].stat = "correct";
       setCards([...cards]);
       setPrevSelection(-1);
-
+      // console.log(matches)
+      const match = matches + 1
+      setMatches(match)
+      // console.log(match)
     } else {
       cards[current].stat = "wrong";
       cards[prevSelection].stat = "wrong";
@@ -127,6 +131,7 @@ function CardGrid() {
   function newGame() {
     setActive(true)
     setGame(true)
+    setMatches(0)
     const newCards = []
 
     while (newCards.length < 16) {
@@ -153,6 +158,11 @@ function CardGrid() {
         setSeconds((seconds) => seconds + 1);
       }, 1000);
     }
+
+    if (matches === 8) {
+      clearInterval(timer)
+    }
+
     return () => {
       clearInterval(timer);
     };
