@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 
+import Auth from "../../utils/auth"
+import { Link } from 'react-router-dom'
+
 import Card from "../Card/index";
 import "../CardGrid/card.css";
 import card1 from "../../img/HP Cards-1.png";
@@ -31,6 +34,8 @@ import card26 from "../../img/HP Face Cards-26.png";
 import card27 from "../../img/HP Face Cards-27.png";
 import card28 from "../../img/HP Face Cards-28.png";
 import card29 from "../../img/HP Face Cards-30.png";
+import auth from "../../utils/auth";
+
 
 function CardGrid() {
   const allCards = [
@@ -68,14 +73,16 @@ function CardGrid() {
   const [cards, setCards] = useState(allCards);
   const [openedCards, setOpenedCards] = useState(0)
   const [prevSelection, setPrevSelection] = useState(-1);
-  
+  const [showModal, setShowModal] = useState(false)
+
   function check(current) {
+
     if (cards[current].id === cards[prevSelection].id) {
       cards[current].stat = "correct";
       cards[prevSelection].stat = "correct";
       setCards([...cards]);
       setPrevSelection(-1);
-      
+
     } else {
       cards[current].stat = "wrong";
       cards[prevSelection].stat = "wrong";
@@ -90,42 +97,51 @@ function CardGrid() {
   }
 
   function handleClick(index) {
-  
+
     if (openedCards === 2) {
-      setTimeout(function(){
-      setOpenedCards(0)
+      setTimeout(function () {
+        setOpenedCards(0)
       }, 500)
       return
     }
-    
-    setOpenedCards(openedCards +1)
+
+    setOpenedCards(openedCards + 1)
 
     if (prevSelection === -1) {
       cards[index].stat = "active";
       setCards([...cards]);
       setPrevSelection(index);
-     
+
     } else {
       check(index);
     }
   }
 
+  function checkAuth() {
+    console.log(Auth.loggedIn())
+    Auth.loggedIn() ? 
+      newGame()
+      : window.location.replace('/login')
+  }
+
   function newGame() {
+    setActive(true)
+    setGame(true)
     const newCards = []
-  
+
     while (newCards.length < 16) {
       let newCard = allCards[Math.floor(Math.random() * allCards.length)]
       if (!newCards.includes(newCard)) {
         console.log(newCard)
         newCards.push(newCard)
-        newCards.push({...newCard})
+        newCards.push({ ...newCard })
       }
     }
     newCards.sort(() => Math.random() - 0.5)
     console.log(newCards)
     setCards(newCards)
   }
-  
+
   const [seconds, setSeconds] = useState(0);
   const [isActive, setActive] = useState(false);
   const [game, setGame] = useState(false);
@@ -141,16 +157,17 @@ function CardGrid() {
       clearInterval(timer);
     };
   });
-  
+
+
+
   return (
     <>
       <div className="row text-center">
         <div className="col-lg-6 mb-4">
           <button
             onClick={() => {
-              setActive(true);
-              setGame(true);
-              newGame()
+              checkAuth()
+                ;
             }}
             className="btn btn-primary"
           >
@@ -163,13 +180,13 @@ function CardGrid() {
       <div className="container">
         {game
           ? cards.map((card, index) => (
-              <Card
-                key={index}
-                card={card}
-                index={index}
-                handleClick={handleClick}
-              />
-            ))
+            <Card
+              key={index}
+              card={card}
+              index={index}
+              handleClick={handleClick}
+            />
+          ))
           : null}
       </div>
     </>
