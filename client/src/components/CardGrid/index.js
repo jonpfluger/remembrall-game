@@ -3,8 +3,10 @@ import { useQuery, useMutation } from "@apollo/client"
 
 import Auth from "../../utils/auth"
 import { QUERY_ME } from "../../utils/queries"
-import { UPDATE_SCORE } from "../../utils/mutations"
+import { UPDATE_SCORE, ADD_SPELL, REMOVE_SPELL } from "../../utils/mutations"
 
+import SpellData from "../SpellData";
+import SpellList from "../SpellList";
 import Card from "../Card/index";
 import "../CardGrid/card.css";
 import card1 from "../../img/HP Cards-1.png";
@@ -36,6 +38,16 @@ import card26 from "../../img/HP Face Cards-26.png";
 import card27 from "../../img/HP Face Cards-27.png";
 import card28 from "../../img/HP Face Cards-28.png";
 import card29 from "../../img/HP Face Cards-30.png";
+import card30 from "../../img/HP Face Cards next 10-1.png";
+import card31 from "../../img/HP Face Cards next 10-2.png";
+import card32 from "../../img/HP Face Cards next 10-3.png";
+import card33 from "../../img/HP Face Cards next 10-4.png";
+import card34 from "../../img/HP Face Cards next 10-5.png";
+import card35 from "../../img/HP Face Cards next 10-6.png";
+import card36 from "../../img/HP Face Cards next 10-7.png";
+import card37 from "../../img/HP Face Cards next 10-8.png";
+import card38 from "../../img/HP Face Cards next 10-9.png";
+import card39 from "../../img/HP Face Cards next 10-10.png";
 
 
 function CardGrid() {
@@ -69,6 +81,16 @@ function CardGrid() {
     { id: 27, img: card27, stat: "" },
     { id: 28, img: card28, stat: "" },
     { id: 29, img: card29, stat: "" },
+    { id: 30, img: card30, stat: "" },
+    { id: 31, img: card31, stat: "" },
+    { id: 32, img: card32, stat: "" },
+    { id: 33, img: card33, stat: "" },
+    { id: 34, img: card34, stat: "" },
+    { id: 35, img: card35, stat: "" },
+    { id: 36, img: card36, stat: "" },
+    { id: 37, img: card37, stat: "" },
+    { id: 38, img: card38, stat: "" },
+    { id: 39, img: card39, stat: "" },
   ]
 
   const [cards, setCards] = useState(allCards);
@@ -80,7 +102,12 @@ function CardGrid() {
   const {loading, data} = useQuery(QUERY_ME)
   const wizard = data?.me || {}
 
+  const accio = SpellData[0]
+  const revelio = SpellData[1]
+
   const [ updateScore ] = useMutation(UPDATE_SCORE)
+  const [ addSpell ] = useMutation(ADD_SPELL)
+  const [ removeSpell ] = useMutation(REMOVE_SPELL)
 
   function check(current) {
 
@@ -89,20 +116,22 @@ function CardGrid() {
       cards[prevSelection].stat = "correct";
       setCards([...cards]);
       setPrevSelection(-1);
-      // console.log(matches)
+
       const match = matches + 1
       setMatches(match)
-      // console.log(match)
+
     } else {
       cards[current].stat = "wrong";
       cards[prevSelection].stat = "wrong";
       setCards([...cards]);
+
       setTimeout(() => {
         cards[current].stat = "";
         cards[prevSelection].stat = "";
         setCards([...cards]);
         setPrevSelection(-1);
       }, 1000);
+      // may need to change the seconds to make the timeout shorter
     }
   }
 
@@ -112,6 +141,7 @@ function CardGrid() {
       setTimeout(function () {
         setOpenedCards(0)
       }, 500)
+      // may need to change the seconds to make the timeout shorter
       return
     }
 
@@ -133,6 +163,17 @@ function CardGrid() {
       newGame()
       : window.location.replace('/login')
   }
+
+//  function addingSpell(wizardId) {
+//   console.log(wizardId, accio.name)
+//     const updatedWizard = addSpell({
+//       variables: {
+//         wizardId,
+//         name: accio.name
+//       }
+//     })
+//     console.log(updatedWizard)
+//   }
 
   function newGame() {
     setActive(true)
@@ -168,7 +209,7 @@ function CardGrid() {
     if (matches === 8) {
       clearInterval(timer)
 
-      if (wizard.score > seconds) {
+      if (wizard.score > seconds || wizard.score == null) {
         updateScore({
           variables: {
             wizardId: wizard._id,
@@ -197,6 +238,7 @@ function CardGrid() {
             onClick={() => {
               checkAuth()
                 ;
+              // addingSpell(wizard._id)
             }}
             className="btn btn-primary"
           >

@@ -10,13 +10,6 @@ import { QUERY_ME } from "../utils/queries";
 const Home = () => {
   const { loading, data } = useQuery(QUERY_ME);
   const wizard = data?.me || [];
-  console.log(wizard)
-
-  //set up for querying name
-
-  // const wizardName = useMutation(Get_Wizard, {
-  //   refetchQueries: [{ query: Get_Wizard }, "Get_Wizard"],
-  // });
 
   return (
     <main>

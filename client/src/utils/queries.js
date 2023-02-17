@@ -46,6 +46,13 @@ export const QUERY_ME = gql`
       email
       password
       score
+      spells {
+        spellId
+        name
+        description
+        img
+        cost
+      }
     }
   }
 `;
