@@ -60,10 +60,6 @@ function App() {
               element={<Wizard />}
             />
             <Route 
-              path="/wizards/:wizardId"
-              element={<Wizard />}
-            />
-            <Route 
               path="/leaderboard"
               element={<Leaderboard />}
             />

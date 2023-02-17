@@ -53,8 +53,8 @@ function Navigation() {
             <Link className="nav-link text-white" to="/signup">
               Signup
             </Link>
-            <Link className="nav-link text-white" to="/wizards/:id">
-              Wizards
+            <Link className="nav-link text-white" to="/me">
+              Wizard
             </Link>
             <Link className="nav-link text-white" to="/leaderboard">
               Leaderboard
