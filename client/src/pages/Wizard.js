@@ -1,7 +1,9 @@
 import React from "react";
 
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useParams, } from "react-router-dom";
 import { useQuery } from "@apollo/client";
+import Leaderboard from "../components/Leaderboard";
+
 
 import SpellList from "../components/SpellList";
 import SpellForm from "../components/SpellForm";
@@ -15,10 +17,10 @@ const Wizard = () => {
 
   // If there is no `wizardId` in the URL as a parameter, execute the `QUERY_ME` query instead for the logged in user's information
   const { loading, data } = useQuery(QUERY_ME);
-  
+
   // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_WIZARD` query
   const wizard = data?.me || data?.wizard || {};
-   
+
   // Use React Router's `<Redirect />` component to redirect to personal wizard page if username is yours
   if (Auth.loggedIn() && Auth.getWizard().data._id === wizardId) {
     return <Navigate to="/me" />;
@@ -39,7 +41,14 @@ const Wizard = () => {
 
   return (
     <main>
-      <h3>Wizard</h3>
+      <h3 className="text-center px-3 py-4 text-white">
+        Welcome {wizard.name}
+      </h3>
+      <>
+        <Leaderboard />
+        <div className="text-center px-3 py-4 text-white">
+        </div>
+      </>
     </main>
   );
 };
