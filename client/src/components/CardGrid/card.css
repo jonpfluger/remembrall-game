@@ -20,7 +20,7 @@ h1 {
 }
 
 .gridCard {
-  background-color: rgb(93, 0, 93);
+  background-color: rgba(117, 114, 117, 0.092);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,8 +40,8 @@ h1 {
 }
 
 .gridCard img {
-  max-width: 80%;
-  max-height: 80%;
+  max-width: 90%;
+  max-height: 90%;
   transform: scale(0);
 }
 
@@ -59,7 +59,15 @@ h1 {
 
 .gridCard.active img {
   transform: scale(1);
+  
 }
+
+.gridCard.inactive {
+  background-image: url('/src/img/cardBack.png');
+  
+  
+}
+
 
 @media (max-width: 992px) {
   .container {
