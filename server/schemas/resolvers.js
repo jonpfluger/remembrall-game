@@ -65,15 +65,14 @@ const resolvers = {
         return wizard.populate('spells')
     },
     removeSpell: async (parent, { wizardId, name }, context) => {
-      console.log(wizardId, name)
       const spell = await Spell.findOne({name})
-      console.log(spell)
+  
       const wizard = await Wizard.findOneAndUpdate(
         { _id: wizardId },
         { $pull: { spells: spell._id } },
         { new: true }
       );
-      console.log(wizard)
+
       return wizard.populate('spells')
     },
     updateScore: async (parent, args, context) => {
@@ -82,7 +81,7 @@ const resolvers = {
         { $set: { score: args.score } },
         { new: true }
       )
-      console.log(wizard)
+
       return wizard.populate('spells')
     },
   },

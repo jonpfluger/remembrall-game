@@ -107,7 +107,6 @@ function CardGrid() {
 
   const [updateScore] = useMutation(UPDATE_SCORE);
   const [addSpell] = useMutation(ADD_SPELL);
-  const [removeSpell] = useMutation(REMOVE_SPELL);
 
   function check(current) {
     if (
@@ -125,6 +124,8 @@ function CardGrid() {
       cards[current].stat = "wrong";
       cards[prevSelection].stat = "wrong";
       setCards([...cards]);
+
+      // may help with time issue
       setSeconds(seconds + 1)
 
       setTimeout(() => {
@@ -132,7 +133,7 @@ function CardGrid() {
         cards[prevSelection].stat = "";
         setCards([...cards]);
         setPrevSelection(-1);
-      }, 1000);
+      }, 800);
       // may need to change the seconds to make the timeout shorter
     }
   }
@@ -239,7 +240,9 @@ function CardGrid() {
           </button>
           <p className="text-white pt-3"> Seconds: {seconds}</p>
           {game
-            ? <SpellList />
+            ? <SpellList
+                wizard={wizard}
+              />
             : null
           }
         </div>
