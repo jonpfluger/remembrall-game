@@ -1,0 +1,15 @@
+#customLeaderboard {
+    width: 50%;
+}
+
+@media only screen and (max-width: 1000px) {
+    #customLeaderboard {
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    #customLeaderboard {
+        width: 100%;
+    }
+}
