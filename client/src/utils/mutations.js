@@ -26,7 +26,6 @@ export const ADD_SPELL = gql`
         name
         description
         cost
-        quantity
       }
     }
   }

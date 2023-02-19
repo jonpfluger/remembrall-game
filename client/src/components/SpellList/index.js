@@ -1,39 +1,18 @@
 import React from 'react';
-import { useMutation, useQuery } from '@apollo/client';
+import SpellData from "../SpellData";
 
-import { ADD_SPELL, REMOVE_SPELL } from '../../utils/mutations';
-import { QUERY_SINGLE_SPELL } from '../../utils/queries';
-
-const SpellList = ({ wizard, game }) => {
-  // const [removeSpell, { error }] = useMutation(REMOVE_SPELL, {
-  //   update(cache, { data: { removeSpell } }) {
-  //     try {
-  //       cache.writeQuery({
-  //         query: QUERY_ME,
-  //         data: { me: removeSpell },
-  //       });
-  //     } catch (e) {
-  //       console.error(e);
-  //     }
-  //   },
-  // });
-
-  // const handleRemoveSpell = async (spell) => {
-  //   try {
-  //     const { data } = await removeSpell({
-  //       variables: { spell },
-  //     });
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-
-  // if (!spells.length) {
-  //   return <h3>No Spells Yet</h3>;
-  // }
+const SpellList = () => {
+  const accio = SpellData[0]
+  const revelio = SpellData[1]
 
   return (
-    <h3>Spell List</h3>
+    <div className="card m-auto" style={{width: 150 + "px"}} onClick={() => console.log("click")}>
+      <img src={revelio.img} alt={revelio.id} className="m-auto mt-3" style={{height: 70 + "px", width: 70 + "px"}} />
+      <div className='text-center'>
+        <p className='fs-5 mb-0 fw-bold'>{revelio.name}</p>
+        <p className='fs-6'>{revelio.description}</p>
+      </div>
+    </div>
   );
 };
 
