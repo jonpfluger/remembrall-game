@@ -99,6 +99,7 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
   const [prevSelection, setPrevSelection] = useState(-1);
   const [showModal, setShowModal] = useState(false);
   const [matches, setMatches] = useState(0);
+  const [matchResult, setMatchResult] = useState(null)
 
   const { loading, data } = useQuery(QUERY_ME);
   const wizard = data?.me || {};
