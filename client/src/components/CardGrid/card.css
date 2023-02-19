@@ -65,6 +65,7 @@ h1 {
   background-image: url("/src/img/cardBack.png");
   object-fit: contain;
   width: 100%;
+  background-size: 100% 100%;
 }
 
 @media (max-width: 992px) {
