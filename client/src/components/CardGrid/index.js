@@ -97,6 +97,7 @@ function CardGrid() {
   const [prevSelection, setPrevSelection] = useState(-1);
   const [showModal, setShowModal] = useState(false);
   const [matches, setMatches] = useState(0);
+  const [seconds, setSeconds] = useState(0);
 
   const { loading, data } = useQuery(QUERY_ME);
   const wizard = data?.me || {};
@@ -124,13 +125,13 @@ function CardGrid() {
       cards[current].stat = "wrong";
       cards[prevSelection].stat = "wrong";
       setCards([...cards]);
+      setSeconds(seconds + 1)
 
       setTimeout(() => {
         cards[current].stat = "";
         cards[prevSelection].stat = "";
         setCards([...cards]);
         setPrevSelection(-1);
-
       }, 1000);
       // may need to change the seconds to make the timeout shorter
     }
@@ -189,7 +190,6 @@ function CardGrid() {
     setCards(newCards);
   }
 
-  const [seconds, setSeconds] = useState(0);
   const [isActive, setActive] = useState(false);
   const [game, setGame] = useState(false);
 
@@ -230,6 +230,7 @@ function CardGrid() {
           <button
             onClick={() => {
               checkAuth();
+              setSeconds(0);
               addingSpell(wizard._id)
             }}
             className="btn btn-primary"
