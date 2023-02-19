@@ -118,6 +118,7 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
       cards[prevSelection].stat = "correct";
       setCards([...cards]);
       setPrevSelection(-1);
+      setMatchResult("correct")
 
       const match = matches + 1;
       setMatches(match);
@@ -125,6 +126,7 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
       cards[current].stat = "wrong";
       cards[prevSelection].stat = "wrong";
       setCards([...cards]);
+      setMatchResult("wrong")
 
       // may help with time issue
       setSeconds(seconds + 1);
@@ -134,6 +136,7 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
         cards[prevSelection].stat = "";
         setCards([...cards]);
         setPrevSelection(-1);
+        // setMatchResult(false)
       }, 800);
       // may need to change the seconds to make the timeout shorter
     }
@@ -177,6 +180,7 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
     setActive(true);
     setGame(true);
     setMatches(0);
+    setMatchResult(null)
     const newCards = [];
 
     while (newCards.length < 16) {
@@ -215,6 +219,7 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
 
   return (
     <>
+    {!!matchResult && <Particle matchResult={matchResult}/>}
       <div className="row text-center justify-content-center">
         <div className="col-lg-6 mb-4">
           <button

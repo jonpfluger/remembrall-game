@@ -5,6 +5,7 @@ function Card({ card, index, handleClick }) {
 
   return (
     <div className={"gridCard" + cardClass} onClick={() => handleClick(index)}>
+      {/* <Particle /> */}
       <img src={card.img} alt={card.id} />
     </div>
   );
