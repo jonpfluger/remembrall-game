@@ -1,6 +1,7 @@
 import {useMutation, useQuery} from '@apollo/client'
 
 import { QUERY_WIZARDS } from "../../utils/queries"
+import "../Leaderboard/leaderboard.css"
 
 const Leaderboard = () => {
     
@@ -11,7 +12,7 @@ const Leaderboard = () => {
     return (
         <main className="flex-row justify-center px-3 py-4 p-lg-5">
             <div className="col-12 col-lg-10">
-                <div className="card" style={{ backgroundColor: "#bebebe" }}>
+                <div id="customLeaderboard" className="card m-auto" style={{ backgroundColor: "#bebebe" }}>
                     <h4
                         className="card-header  text-light p-2"
                         style={{ backgroundColor: "#0e1a40" }}

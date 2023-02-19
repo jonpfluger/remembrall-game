@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useQuery, useMutation } from "@apollo/client"
+import { useQuery, useMutation } from "@apollo/client";
 
-import Auth from "../../utils/auth"
-import { QUERY_ME } from "../../utils/queries"
-import { UPDATE_SCORE, ADD_SPELL, REMOVE_SPELL } from "../../utils/mutations"
+import Auth from "../../utils/auth";
+import { QUERY_ME } from "../../utils/queries";
+import { UPDATE_SCORE, ADD_SPELL, REMOVE_SPELL } from "../../utils/mutations";
 
 import SpellData from "../SpellData";
 import SpellList from "../SpellList";
@@ -49,7 +49,6 @@ import card37 from "../../img/HP Face Cards next 10-8.png";
 import card38 from "../../img/HP Face Cards next 10-9.png";
 import card39 from "../../img/HP Face Cards next 10-10.png";
 
-
 function CardGrid() {
   const allCards = [
     { id: 1, img: card1, stat: "" },
@@ -91,35 +90,36 @@ function CardGrid() {
     { id: 37, img: card37, stat: "" },
     { id: 38, img: card38, stat: "" },
     { id: 39, img: card39, stat: "" },
-  ]
+  ];
 
   const [cards, setCards] = useState(allCards);
-  const [openedCards, setOpenedCards] = useState(0)
+  const [openedCards, setOpenedCards] = useState(0);
   const [prevSelection, setPrevSelection] = useState(-1);
   const [showModal, setShowModal] = useState(false);
-  const [matches, setMatches] = useState(0)
+  const [matches, setMatches] = useState(0);
 
-  const {loading, data} = useQuery(QUERY_ME)
-  const wizard = data?.me || {}
+  const { loading, data } = useQuery(QUERY_ME);
+  const wizard = data?.me || {};
 
-  const accio = SpellData[0]
-  const revelio = SpellData[1]
+  const accio = SpellData[0];
+  const revelio = SpellData[1];
 
-  const [ updateScore ] = useMutation(UPDATE_SCORE)
-  const [ addSpell ] = useMutation(ADD_SPELL)
-  const [ removeSpell ] = useMutation(REMOVE_SPELL)
+  const [updateScore] = useMutation(UPDATE_SCORE);
+  const [addSpell] = useMutation(ADD_SPELL);
+  const [removeSpell] = useMutation(REMOVE_SPELL);
 
   function check(current) {
-
-    if (cards[current].id === cards[prevSelection].id && current !== prevSelection) {
+    if (
+      cards[current].id === cards[prevSelection].id &&
+      current !== prevSelection
+    ) {
       cards[current].stat = "correct";
       cards[prevSelection].stat = "correct";
       setCards([...cards]);
       setPrevSelection(-1);
 
-      const match = matches + 1
-      setMatches(match)
-
+      const match = matches + 1;
+      setMatches(match);
     } else {
       cards[current].stat = "wrong";
       cards[prevSelection].stat = "wrong";
@@ -137,32 +137,28 @@ function CardGrid() {
   }
 
   function handleClick(index) {
-
     if (openedCards === 2) {
       setTimeout(function () {
-        setOpenedCards(0)
-      }, 500)
+        setOpenedCards(0);
+      }, 500);
       // may need to change the seconds to make the timeout shorter
-      return
+      return;
     }
 
-    setOpenedCards(openedCards + 1)
+    setOpenedCards(openedCards + 1);
 
     if (prevSelection === -1) {
       cards[index].stat = "active";
       setCards([...cards]);
       setPrevSelection(index);
-
     } else {
       check(index);
     }
   }
 
   function checkAuth() {
-    console.log(Auth.loggedIn())
-    Auth.loggedIn() ? 
-      newGame()
-      : window.location.replace('/login')
+    console.log(Auth.loggedIn());
+    Auth.loggedIn() ? newGame() : window.location.replace("/login");
   }
 
  function addingSpell(wizardId) {
@@ -175,22 +171,22 @@ function CardGrid() {
   }
 
   function newGame() {
-    setActive(true)
-    setGame(true)
-    setMatches(0)
-    const newCards = []
+    setActive(true);
+    setGame(true);
+    setMatches(0);
+    const newCards = [];
 
     while (newCards.length < 16) {
-      let newCard = allCards[Math.floor(Math.random() * allCards.length)]
+      let newCard = allCards[Math.floor(Math.random() * allCards.length)];
       if (!newCards.includes(newCard)) {
-        console.log(newCard)
-        newCards.push(newCard)
-        newCards.push({ ...newCard })
+        console.log(newCard);
+        newCards.push(newCard);
+        newCards.push({ ...newCard });
       }
     }
-    newCards.sort(() => Math.random() - 0.5)
-    console.log(newCards)
-    setCards(newCards)
+    newCards.sort(() => Math.random() - 0.5);
+    console.log(newCards);
+    setCards(newCards);
   }
 
   const [seconds, setSeconds] = useState(0);
@@ -206,20 +202,20 @@ function CardGrid() {
     }
 
     if (matches === 8) {
-      clearInterval(timer)
+      clearInterval(timer);
 
       if (wizard.score > seconds || wizard.score == null) {
         updateScore({
           variables: {
             wizardId: wizard._id,
-            score: seconds
-          }
-        })
+            score: seconds,
+          },
+        });
       }
 
       setTimeout(function () {
-        window.location.replace("/leaderboard")
-      }, 2000)
+        window.location.replace("/leaderboard");
+      }, 2000);
     }
 
     return () => {
@@ -227,16 +223,13 @@ function CardGrid() {
     };
   });
 
-
-
   return (
     <>
-      <div className="row text-center">
+      <div className="row text-center justify-content-center">
         <div className="col-lg-6 mb-4">
           <button
             onClick={() => {
-              checkAuth()
-                ;
+              checkAuth();
               addingSpell(wizard._id)
             }}
             className="btn btn-primary"
@@ -253,17 +246,17 @@ function CardGrid() {
       <div className="container">
         {game
           ? cards.map((card, index) => (
-            <Card
-              key={index}
-              card={card}
-              index={index}
-              handleClick={handleClick}
-            />
-          ))
+              <Card
+                key={index}
+                card={card}
+                index={index}
+                handleClick={handleClick}
+              />
+            ))
           : null}
       </div>
     </>
   );
 }
 
-export default CardGrid
+export default CardGrid;
