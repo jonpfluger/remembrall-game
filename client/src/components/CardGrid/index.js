@@ -130,6 +130,7 @@ function CardGrid() {
         cards[prevSelection].stat = "";
         setCards([...cards]);
         setPrevSelection(-1);
+
       }, 1000);
       // may need to change the seconds to make the timeout shorter
     }
@@ -164,16 +165,14 @@ function CardGrid() {
       : window.location.replace('/login')
   }
 
-//  function addingSpell(wizardId) {
-//   console.log(wizardId, accio.name)
-//     const updatedWizard = addSpell({
-//       variables: {
-//         wizardId,
-//         name: accio.name
-//       }
-//     })
-//     console.log(updatedWizard)
-//   }
+ function addingSpell(wizardId) {
+    addSpell({
+      variables: {
+        wizardId,
+        name: revelio.name
+      }
+    })
+  }
 
   function newGame() {
     setActive(true)
@@ -238,16 +237,19 @@ function CardGrid() {
             onClick={() => {
               checkAuth()
                 ;
-              // addingSpell(wizard._id)
+              addingSpell(wizard._id)
             }}
             className="btn btn-primary"
           >
             New Game
           </button>
           <p className="text-white pt-3"> Seconds: {seconds}</p>
+          {game
+            ? <SpellList />
+            : null
+          }
         </div>
       </div>
-
       <div className="container">
         {game
           ? cards.map((card, index) => (
