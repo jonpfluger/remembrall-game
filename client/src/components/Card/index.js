@@ -1,3 +1,5 @@
+import Particle from "../Particle/Particle";
+
 function Card({ card, index, handleClick }) {
   const cardClass = card.stat ? " active " + card.stat : " inactive ";
 

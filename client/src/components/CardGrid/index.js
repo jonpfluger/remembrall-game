@@ -5,6 +5,8 @@ import Auth from "../../utils/auth";
 import { QUERY_ME } from "../../utils/queries";
 import { UPDATE_SCORE, ADD_SPELL, REMOVE_SPELL } from "../../utils/mutations";
 
+import Particle from "../Particle/Particle";
+
 import SpellData from "../SpellData";
 import SpellList from "../SpellList";
 import Card from "../Card/index";
@@ -244,14 +246,14 @@ function CardGrid() {
       <div className="container">
         {game
           ? cards.map((card, index) => (
-              <Card
-                key={index}
-                card={card}
-                index={index}
-                handleClick={handleClick}
-              />
+            <Card
+            key={index}
+            card={card}
+            index={index}
+            handleClick={handleClick}
+            />
             ))
-          : null}
+            : null}
       </div>
     </>
   );
