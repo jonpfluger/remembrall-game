@@ -49,7 +49,7 @@ import card37 from "../../img/HP Face Cards next 10-8.png";
 import card38 from "../../img/HP Face Cards next 10-9.png";
 import card39 from "../../img/HP Face Cards next 10-10.png";
 
-function CardGrid() {
+function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
   const allCards = [
     { id: 1, img: card1, stat: "" },
     { id: 2, img: card2, stat: "" },
@@ -97,7 +97,6 @@ function CardGrid() {
   const [prevSelection, setPrevSelection] = useState(-1);
   const [showModal, setShowModal] = useState(false);
   const [matches, setMatches] = useState(0);
-  const [seconds, setSeconds] = useState(0);
 
   const { loading, data } = useQuery(QUERY_ME);
   const wizard = data?.me || {};
@@ -126,7 +125,7 @@ function CardGrid() {
       setCards([...cards]);
 
       // may help with time issue
-      setSeconds(seconds + 1)
+      setSeconds(seconds + 1);
 
       setTimeout(() => {
         cards[current].stat = "";
@@ -163,13 +162,13 @@ function CardGrid() {
     Auth.loggedIn() ? newGame() : window.location.replace("/login");
   }
 
- function addingSpell(wizardId) {
+  function addingSpell(wizardId) {
     addSpell({
       variables: {
         wizardId,
-        name: revelio.name
-      }
-    })
+        name: revelio.name,
+      },
+    });
   }
 
   function newGame() {
@@ -191,20 +190,12 @@ function CardGrid() {
     setCards(newCards);
   }
 
-  const [isActive, setActive] = useState(false);
   const [game, setGame] = useState(false);
 
   useEffect(() => {
-    let timer = null;
-    if (isActive) {
-      timer = setInterval(() => {
-        setSeconds((seconds) => seconds + 1);
-      }, 1000);
-    }
-
     if (matches === 8) {
-      clearInterval(timer);
-
+      //clearInterval(intervalId);
+      setActive(false);
       if (wizard.score > seconds || wizard.score == null) {
         updateScore({
           variables: {
@@ -218,10 +209,6 @@ function CardGrid() {
         window.location.replace("/leaderboard");
       }, 2000);
     }
-
-    return () => {
-      clearInterval(timer);
-    };
   });
 
   return (
@@ -232,19 +219,14 @@ function CardGrid() {
             onClick={() => {
               checkAuth();
               setSeconds(0);
-              addingSpell(wizard._id)
+              addingSpell(wizard._id);
             }}
             className="btn btn-primary"
           >
             New Game
           </button>
           <p className="text-white pt-3"> Seconds: {seconds}</p>
-          {game
-            ? <SpellList
-                wizard={wizard}
-              />
-            : null
-          }
+          {game ? <SpellList wizard={wizard} /> : null}
         </div>
       </div>
       <div className="container">
