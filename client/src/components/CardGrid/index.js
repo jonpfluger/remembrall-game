@@ -100,6 +100,7 @@ function CardGrid() {
   const [showModal, setShowModal] = useState(false);
   const [matches, setMatches] = useState(0);
   const [seconds, setSeconds] = useState(0);
+  const [matchResult, setMatchResult] = useState(null)
 
   const { loading, data } = useQuery(QUERY_ME);
   const wizard = data?.me || {};
@@ -119,6 +120,7 @@ function CardGrid() {
       cards[prevSelection].stat = "correct";
       setCards([...cards]);
       setPrevSelection(-1);
+      setMatchResult("correct")
 
       const match = matches + 1;
       setMatches(match);
@@ -126,6 +128,7 @@ function CardGrid() {
       cards[current].stat = "wrong";
       cards[prevSelection].stat = "wrong";
       setCards([...cards]);
+      setMatchResult("wrong")
 
       // may help with time issue
       setSeconds(seconds + 1)
@@ -135,6 +138,7 @@ function CardGrid() {
         cards[prevSelection].stat = "";
         setCards([...cards]);
         setPrevSelection(-1);
+        // setMatchResult(false)
       }, 800);
       // may need to change the seconds to make the timeout shorter
     }
@@ -178,6 +182,7 @@ function CardGrid() {
     setActive(true);
     setGame(true);
     setMatches(0);
+    setMatchResult(null)
     const newCards = [];
 
     while (newCards.length < 16) {
@@ -228,6 +233,7 @@ function CardGrid() {
 
   return (
     <>
+    {!!matchResult && <Particle matchResult={matchResult}/>}
       <div className="row text-center justify-content-center">
         <div className="col-lg-6 mb-4">
           <button
