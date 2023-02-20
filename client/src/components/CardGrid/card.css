@@ -52,10 +52,12 @@ h1 {
 
 .gridCard.active {
   transform: rotateY(0);
+  pointer-events: none;
 }
 
 .gridCard.correct {
   background-color: green;
+  pointer-events: none;
 }
 
 .gridCard.wrong {
