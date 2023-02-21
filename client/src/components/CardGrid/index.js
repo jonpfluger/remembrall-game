@@ -6,6 +6,7 @@ import { QUERY_ME } from "../../utils/queries";
 import { UPDATE_SCORE, ADD_SPELL, REMOVE_SPELL } from "../../utils/mutations";
 
 import Particle from "../Particle/Particle";
+import Button from "../Button";
 
 import SpellData from "../SpellData";
 import SpellList from "../SpellList";
@@ -50,6 +51,7 @@ import card36 from "../../img/HP Face Cards next 10-7.png";
 import card37 from "../../img/HP Face Cards next 10-8.png";
 import card38 from "../../img/HP Face Cards next 10-9.png";
 import card39 from "../../img/HP Face Cards next 10-10.png";
+
 
 function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
   const allCards = [
@@ -240,16 +242,14 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
     {!!matchResult && <Particle matchResult={matchResult}/>}
       <div className="row text-center justify-content-center">
         <div className="col-lg-6 mb-4">
-          <button
-            onClick={() => {
-              checkAuth();
-              setSeconds(0);
-              addingSpell(wizard._id);
-            }}
-            className="btn btn-primary"
-          >
-            New Game
-          </button>
+          
+          <Button 
+          checkAuth={checkAuth}
+          setSeconds={setSeconds}
+          addingSpell={addingSpell}
+          wizard={wizard}
+          />
+          
           <p className="text-white pt-3"> Seconds: {seconds}</p>
           {game ? <SpellList wizard={wizard} usingSpell={usingSpell} /> : null}
         </div>
