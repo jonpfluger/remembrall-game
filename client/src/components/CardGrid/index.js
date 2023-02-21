@@ -107,11 +107,9 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
   const { loading, data } = useQuery(QUERY_ME);
   const wizard = data?.me || {};
 
-  const accio = SpellData[0];
-  const revelio = SpellData[1];
-
   const [updateScore] = useMutation(UPDATE_SCORE);
   const [addSpell] = useMutation(ADD_SPELL);
+  const [removeSpell] = useMutation(REMOVE_SPELL);
 
   function check(current) {
     if (
@@ -173,12 +171,14 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
   }
 
   function addingSpell(wizardId) {
-    addSpell({
-      variables: {
-        wizardId,
-        name: revelio.name,
-      },
-    });
+    for (let i = 0; i < SpellData.length; i++) {
+      addSpell({
+        variables: {
+          wizardId,
+          name: SpellData[i].name,
+        },
+      });
+    }
   }
 
   function newGame() {
@@ -202,18 +202,46 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
     setUnmatchedCards(newCards)
   }
 
-  function usingSpell() {
-    console.log(unmatchedCards)
-    let randomCard = unmatchedCards[Math.floor(Math.random() * unmatchedCards.length)]
-    console.log(randomCard)
-    randomCard.stat = "correct"
-    for (let i = 0; i < cards.length; i++) {
-      if (randomCard.id === cards[i].id && cards[i].stat !== "correct") {
-        cards[i].stat = "correct"
+  function removingSpell(wizardId, name) {
+    removeSpell({
+      variables: {
+        wizardId,
+        name
       }
+    })
+  }
+
+  function usingSpell(wizardId, name) {
+    if (name == "Revelio") {
+      console.log(unmatchedCards)
+      let randomCard = unmatchedCards[Math.floor(Math.random() * unmatchedCards.length)]
+      console.log(randomCard)
+      randomCard.stat = "correct"
+      for (let i = 0; i < cards.length; i++) {
+        if (randomCard.id === cards[i].id && cards[i].stat !== "correct") {
+          cards[i].stat = "correct"
+        }
+      }
+      removingSpell(wizardId, name)
+      const match = matches + 1;
+      setMatches(match);
+    } else if (cards[prevSelection]) {
+      let activeCard = cards[prevSelection]
+      activeCard.stat = "correct"
+
+      for (let i = 0; i < cards.length; i++) {
+        if (activeCard.id === cards[i].id && cards[i].stat !== "correct") {
+          cards[i].stat = "correct"
+        }
+      }
+      
+      setPrevSelection(-1)
+      removingSpell(wizardId, name)
+      const match = matches + 1;
+      setMatches(match);
+    } else {
+      setPrevSelection(-1)
     }
-    const match = matches + 1;
-    setMatches(match);
   }
 
   const [game, setGame] = useState(false);
