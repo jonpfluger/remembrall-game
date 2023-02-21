@@ -100,6 +100,7 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
   const [showModal, setShowModal] = useState(false);
   const [matches, setMatches] = useState(0);
   const [matchResult, setMatchResult] = useState(null)
+  const [unmatchedCards, setUnmatchedCards] = useState(cards);
 
   const { loading, data } = useQuery(QUERY_ME);
   const wizard = data?.me || {};
@@ -120,6 +121,9 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
       setCards([...cards]);
       setPrevSelection(-1);
       setMatchResult("correct")
+      let newCardArray = cards.filter(card => {if (card.stat !== "correct"){return card}})
+      console.log(newCardArray)
+      setUnmatchedCards(newCardArray)
 
       const match = matches + 1;
       setMatches(match);
@@ -128,8 +132,6 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
       cards[prevSelection].stat = "wrong";
       setCards([...cards]);
       setMatchResult("wrong")
-
-      // may help with time issue
       setSeconds(seconds + 1);
 
       setTimeout(() => {
@@ -139,7 +141,7 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
         setPrevSelection(-1);
         // setMatchResult(false)
       }, 800);
-      // may need to change the seconds to make the timeout shorter
+      
     }
   }
 
@@ -148,7 +150,7 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
       setTimeout(function () {
         setOpenedCards(0);
       }, 500);
-      // may need to change the seconds to make the timeout shorter
+
       return;
     }
 
@@ -195,6 +197,21 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
     newCards.sort(() => Math.random() - 0.5);
     console.log(newCards);
     setCards(newCards);
+    setUnmatchedCards(newCards)
+  }
+
+  function usingSpell() {
+    console.log(unmatchedCards)
+    let randomCard = unmatchedCards[Math.floor(Math.random() * unmatchedCards.length)]
+    console.log(randomCard)
+    randomCard.stat = "correct"
+    for (let i = 0; i < cards.length; i++) {
+      if (randomCard.id === cards[i].id && cards[i].stat !== "correct") {
+        cards[i].stat = "correct"
+      }
+    }
+    const match = matches + 1;
+    setMatches(match);
   }
 
   const [game, setGame] = useState(false);
@@ -234,7 +251,7 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
             New Game
           </button>
           <p className="text-white pt-3"> Seconds: {seconds}</p>
-          {game ? <SpellList wizard={wizard} /> : null}
+          {game ? <SpellList wizard={wizard} usingSpell={usingSpell} /> : null}
         </div>
       </div>
       <div className="container">

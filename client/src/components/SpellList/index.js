@@ -3,7 +3,7 @@ import { useMutation } from "@apollo/client";
 import { REMOVE_SPELL } from '../../utils/mutations';
 import SpellData from "../SpellData";
 
-const SpellList = ({wizard}) => {
+const SpellList = ({wizard, usingSpell}) => {
   const [removeSpell] = useMutation(REMOVE_SPELL);
   const accio = SpellData[0]
   const revelio = SpellData[1]
@@ -19,7 +19,7 @@ const SpellList = ({wizard}) => {
 
   return (
     wizard.spells.map((spell) => (
-      <div key={spell.spellId} className="card m-auto" style={{width: 150 + "px"}} onClick={() => removingSpell(wizard._id)}>
+      <div key={spell.spellId} className="card m-auto" style={{width: 150 + "px"}} onClick={() => {removingSpell(wizard._id); usingSpell()}}>
         <img src={revelio.img} alt={revelio.id} className="m-auto mt-3" style={{height: 70 + "px", width: 70 + "px"}} />
         <div className='text-center'>
           <p className='fs-5 mb-0 fw-bold'>{spell.name}</p>
