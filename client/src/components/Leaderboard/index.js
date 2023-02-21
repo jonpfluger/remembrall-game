@@ -2,6 +2,7 @@ import {useMutation, useQuery} from '@apollo/client'
 
 import { QUERY_WIZARDS } from "../../utils/queries"
 import "../Leaderboard/leaderboard.css"
+import Button from '../Button'
 
 const Leaderboard = () => {
     

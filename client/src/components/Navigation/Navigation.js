@@ -48,13 +48,15 @@ function Navigation() {
                 <Link className="nav-link text-white" onClick={Auth.logout}>Logout</Link>
               </>
             ) : (
-              <Link className="nav-link text-white" to="/login"onClick={() => setShowModal(true)}>Login</Link>
+              <>
+                <Link className="nav-link text-white" to="/login" onClick={() => setShowModal(true)}>Login</Link>
+                <Link className="nav-link text-white" to="/signup">
+                  Signup
+                </Link>
+              </>
             )}
-            <Link className="nav-link text-white" to="/signup">
-              Signup
-            </Link>
-            <Link className="nav-link text-white" to="/me">
-              Wizard
+            <Link className="nav-link text-white" to="/game">
+              Game
             </Link>
             <Link className="nav-link text-white" to="/leaderboard">
               Leaderboard
