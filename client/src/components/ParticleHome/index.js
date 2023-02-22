@@ -53,7 +53,7 @@ function ParticleHome() {
                     "line_linked": {
                         "enable": true,
                         "distance": 120,
-                        "color": "#03045e"
+                        "color": "#023e8a"
                     },
                     "move": {
                         "enable": true,
