@@ -19,6 +19,10 @@
       transform: rotateY(180deg);
     }
   }
+
+  #wizard-name {
+    position: relative;
+  }
   
   .homeCard img {
     max-width: 100%;
