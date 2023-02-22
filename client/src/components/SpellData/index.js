@@ -5,7 +5,7 @@ const SpellData = [
   {
     spellId: 1,
     name: 'Accio',
-    description: 'Summons the card that matches the card recently flipped.',
+    description: 'Summons the card that matches the revealed card.',
     img: Accio,
     const: 5
   },
