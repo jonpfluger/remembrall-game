@@ -1,10 +1,10 @@
 const Rules = () => {
   return (
     <main className="flex-row justify-center px-3 py-4 p-lg-5">
-      <div className="row-12 row-lg-12">
+      <div className="row-12 row-lg-12 ">
         <div
           id="customLeaderboard"
-          className="card m-auto"
+          className="card m-auto w-100"
           style={{ backgroundColor: "#bebebe" }}
         >
           <h4
