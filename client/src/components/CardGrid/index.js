@@ -213,18 +213,19 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
 
   function usingSpell(wizardId, name) {
     if (name == "Revelio") {
-      console.log(unmatchedCards)
       let randomCard = unmatchedCards[Math.floor(Math.random() * unmatchedCards.length)]
-      console.log(randomCard)
       randomCard.stat = "correct"
+      
       for (let i = 0; i < cards.length; i++) {
         if (randomCard.id === cards[i].id && cards[i].stat !== "correct") {
           cards[i].stat = "correct"
         }
       }
+
       removingSpell(wizardId, name)
       const match = matches + 1;
       setMatches(match);
+
     } else if (cards[prevSelection]) {
       let activeCard = cards[prevSelection]
       activeCard.stat = "correct"
