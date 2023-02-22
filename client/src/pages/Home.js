@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <main>
       <ParticleHome />
-      <h3 className="text-center px-3 py-4 text-white">
+      <h3 className="text-center px-3 py-4 text-white" id="wizard-name">
         Welcome {wizard.name}
         <div className="text-center pt-3">
           <img className="container-fluid no-good"
