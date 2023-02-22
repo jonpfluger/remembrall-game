@@ -6,8 +6,6 @@
 .homeCard {
     display: flex;
     border-radius: 5px;
-    transform: rotateY(180deg);
-    transition: transform 0.5s;
   }
   
   @keyframes hideCard {
@@ -24,24 +22,8 @@
     position: relative;
   }
   
-  .homeCard img {
-    max-width: 100%;
-    max-height: 100%;
-    transform: scale(0);
-  }
+
   
-  .homeCard.active {
-    transform: rotateY(0);
-    pointer-events: none;
-  }
   
-  .homeCard.active img {
-    transform: scale(1);
-  }
   
-  .homeCard.inactive {
-    background-image: url("/src/img/cardBack.png");
-    object-fit: contain;
-    width: 100%;
-    background-size: 100% 100%;
-  }
+  
