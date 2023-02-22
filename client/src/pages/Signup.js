@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { useMutation } from "@apollo/client";
 import { ADD_WIZARD } from "../utils/mutations";
+import ParticleHome from "../components/ParticleHome";
 
 import Auth from "../utils/auth";
 
@@ -42,6 +43,7 @@ const Signup = () => {
 
   return (
     <main className="flex-row justify-center px-3 py-4 p-lg-5">
+      <ParticleHome />
       <div className="col-12 col-lg-10">
         <div className="card" style={{ backgroundColor: "#bebebe" }}>
           <h4
