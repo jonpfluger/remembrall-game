@@ -269,8 +269,8 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
   return (
     <>
     {!!matchResult && <Particle matchResult={matchResult}/>}
-      <div className="row text-center justify-content-center">
-        <div className="col-lg-6 mb-4">
+      <div className="row d-flex text-center justify-content-center">
+        <div className="col-10 mb-4">
           
           <Button 
           checkAuth={checkAuth}
