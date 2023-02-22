@@ -3,6 +3,7 @@ import {useMutation, useQuery} from '@apollo/client'
 import { QUERY_WIZARDS } from "../../utils/queries"
 import "../Leaderboard/leaderboard.css"
 import Button from '../Button'
+import ParticleHome from '../ParticleHome'
 
 const Leaderboard = () => {
     
@@ -12,6 +13,7 @@ const Leaderboard = () => {
 
     return (
         <main className="flex-row justify-center px-3 py-4 p-lg-5">
+            <ParticleHome />
             <div className="col-12 col-lg-10">
                 <div id="customLeaderboard" className="card m-auto" style={{ backgroundColor: "#bebebe" }}>
                     <h4
