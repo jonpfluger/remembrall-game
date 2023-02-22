@@ -1,4 +1,4 @@
-import homeCard from "../../img/HP Cards-12.png";
+import homeCard from "../../img/cardBack.png";
 import remembrall from "../../img/remembrall.gif";
 import Rules from "../../components/Rules";
 import '../HomePage/homepage.css'

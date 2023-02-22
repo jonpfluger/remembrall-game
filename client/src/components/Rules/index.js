@@ -1,7 +1,7 @@
 const Rules = () => {
   return (
     <main className="flex-row justify-center px-3 py-4 p-lg-5">
-      <div className="row-12 row-lg-10">
+      <div className="row-12 row-lg-12">
         <div
           id="customLeaderboard"
           className="card m-auto"
