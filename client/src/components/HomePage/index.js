@@ -8,7 +8,7 @@ const HomePage = () => {
     <main id="homepage" className="flex-row d-flex justify-content-center ">
       <div className="flex-row justify-center align-items-center">
         <img src={homeCard} className="homeCard position-relative" width="200" />
-        <div className="justify-center px-5">
+        <div className="text-center justify-center px-5">
         <img src={remembrall} className=" position-relative" width="250" />
         <Rules />
         </div>
