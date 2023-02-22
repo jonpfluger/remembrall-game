@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
-
 import { QUERY_ME } from "../utils/queries";
 
 import ParticleHome from "../components/ParticleHome";
-
+import HomePage from "../components/HomePage"
 import image from '../img/nogood.png'
 
 
 const Home = () => {
-
   const { loading, data } = useQuery(QUERY_ME);
   const wizard = data?.me || [];
 
@@ -25,6 +23,7 @@ const Home = () => {
           </img>
         </div>
       </h3>
+      <HomePage />
     </main>
   );
 };
