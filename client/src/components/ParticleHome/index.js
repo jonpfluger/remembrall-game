@@ -25,13 +25,13 @@ function ParticleHome() {
                         "value": 250
                     },
                     "color": {
-                        "value": "#fff"
+                        "value": "#ffd60a"
                     },
                     "shape": {
                         "type": "circle",
                         "stroke": {
                             "width": 1,
-                            "color": "#dc2f02"
+                            "color": "#ffd60a"
                         }
                     },
                     "opacity": {
@@ -53,7 +53,7 @@ function ParticleHome() {
                     "line_linked": {
                         "enable": true,
                         "distance": 120,
-                        "color": "#dc2f02"
+                        "color": "#03045e"
                     },
                     "move": {
                         "enable": true,
