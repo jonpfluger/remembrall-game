@@ -8,7 +8,7 @@ We wanted to make a game and we were inspired by the recent Harry Potter game re
 
 ## User Story
 
-As a wizard/witch, I want to be able to play a harry potter themed memory card game, so that I can exercise my brain and test my memory while having fun.
+As a wizard/witch, I want to be able to play a Harry Potter themed memory card game, so that I can exercise my brain and test my memory while having fun.
 
 ## Technology Used
 
@@ -18,6 +18,10 @@ As a wizard/witch, I want to be able to play a harry potter themed memory card g
 - Apollo Server
 - Apollo Client
 - Node.js/Express.js
+- Bootstrap
+- React-tsparticles
+- Adobe Express
+- fontspace.com
 
 ## Screenshot
 
@@ -29,4 +33,8 @@ test
 
 ## Collaborators
 
-Built by Jon Pfluger, Jason Jones, Jennifer Kiesler, Christopher McLaughlin, and Megan Rakow
+🧙‍♂️Built by Jon Pfluger, Jason Jones, Jennifer Kiesler, Christopher McLaughlin, and Megan Rakow🧙‍♀️
+
+## Presentation Slides
+
+https://docs.google.com/presentation/d/1wjzhCTJUSL_5W4yAtTBijN04xKch99un5rLv0jDd9Qw/edit?usp=sharing
