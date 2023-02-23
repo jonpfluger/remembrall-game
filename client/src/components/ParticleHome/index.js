@@ -2,6 +2,8 @@ import Particles from "react-tsparticles";
 import { useCallback } from "react";
 import { loadFull } from "tsparticles";
 
+import candle from '../../img/candle.png'
+
 function ParticleHome() {
     const particlesInit = useCallback(async (engine) => {
         console.log(engine);
@@ -22,28 +24,30 @@ function ParticleHome() {
             options={{
                 "particles": {
                     "number": {
-                        "value": 250
+                        "value": 100
                     },
                     "color": {
-                        "value": "#ffd60a"
+                        "value": "#000"
                     },
                     "shape": {
-                        "type": "circle",
+                        "type": "image",
                         "stroke": {
-                            "width": 1,
-                            "color": "#ffd60a"
-                        }
+                            "width": 10,
+                        },
+                        "image": {
+                            "src": candle,
+                        },
                     },
                     "opacity": {
-                        "value": 0.5,
-                        "random": true,
+                        "value": .75,
+                        "random": false,
                         "anim": {
                             "enable": false,
                             "speed": 1
                         }
                     },
                     "size": {
-                        "value": 1,
+                        "value": 30,
                         "random": true,
                         "anim": {
                             "enable": true,
@@ -51,7 +55,7 @@ function ParticleHome() {
                         }
                     },
                     "line_linked": {
-                        "enable": true,
+                        "enable": false,
                         "distance": 120,
                         "color": "#023e8a"
                     },
@@ -74,7 +78,7 @@ function ParticleHome() {
                             "mode": "remove"
                         }
                     }
-                }
+                } 
             }}
         />
     );
