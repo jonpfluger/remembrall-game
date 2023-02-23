@@ -4,7 +4,6 @@ import { QUERY_ME } from "../utils/queries";
 
 import ParticleHome from "../components/ParticleHome";
 import HomePage from "../components/HomePage";
-import image from "../img/nogood.png";
 
 const Home = () => {
   const { data } = useQuery(QUERY_ME);
