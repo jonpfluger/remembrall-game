@@ -6,13 +6,13 @@
 * {
   cursor: url(https://cur.cursors-4u.net/user/use-1/use160.cur), auto !important;
 }
-/* 
+
 @font-face {
   font-family: "harry_pregular";
-
+  src: url("./fonts/harryp-mvz6w-webfont.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
-} */
+}
 /**
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
@@ -378,7 +378,7 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: "harry_pregular" !important;
+  font-family: "EB Garamond", serif;
   font-size: 16px;
   color: #1a1a1a;
 }
@@ -403,15 +403,17 @@ h2 {
 }
 
 h3 {
-  font-size: 1.75rem;
+  font-size: 55px;
+  z-index: 999;
+  position: relative;
 }
 
 h4 {
-  font-size: 1.5rem;
+  font-size: 55px;
 }
 
 h5 {
-  font-size: 1.25rem;
+  font-size: 32px;
 }
 
 h6 {

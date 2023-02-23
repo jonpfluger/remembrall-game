@@ -1,6 +1,6 @@
 const Rules = () => {
   return (
-    <main className="flex-row justify-center  p-lg-5">
+    <main className="flex-row justify-center py-4 px-3 p-lg-5">
       <div className="row-12 row-lg-12 ">
         <div
           id="customLeaderboard"
@@ -14,11 +14,11 @@ const Rules = () => {
             Rules
           </h4>
           <div className="card-body">
-              <p>Click Game to go to the game page.</p>
-              <p>Time will begin when the New Game button is selected.</p>
-              <p>Match 2 cards together.</p>
-              <p>Spells can only be used once per game.</p>
-              <p>Lower time = better score.</p>
+            <p>Click Game to go to the game page.</p>
+            <p>Time will begin when the New Game button is selected.</p>
+            <p>Match 2 cards together.</p>
+            <p>Spells can only be used once per game.</p>
+            <p>Lower time = better score.</p>
           </div>
         </div>
       </div>
