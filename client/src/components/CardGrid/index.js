@@ -99,12 +99,11 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
   const [cards, setCards] = useState(allCards);
   const [openedCards, setOpenedCards] = useState(0);
   const [prevSelection, setPrevSelection] = useState(-1);
-  const [showModal, setShowModal] = useState(false);
   const [matches, setMatches] = useState(0);
   const [matchResult, setMatchResult] = useState(null)
   const [unmatchedCards, setUnmatchedCards] = useState(cards);
 
-  const { loading, data } = useQuery(QUERY_ME);
+  const { data } = useQuery(QUERY_ME);
   const wizard = data?.me || {};
 
   const [updateScore] = useMutation(UPDATE_SCORE);
@@ -139,7 +138,6 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
         cards[prevSelection].stat = "";
         setCards([...cards]);
         setPrevSelection(-1);
-        // setMatchResult(false)
       }, 800);
       
     }
@@ -249,7 +247,6 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
 
   useEffect(() => {
     if (matches === 8) {
-      //clearInterval(intervalId);
       setActive(false);
       if (wizard.score > seconds || wizard.score == null) {
         updateScore({

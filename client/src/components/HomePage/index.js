@@ -12,16 +12,16 @@ const HomePage = () => {
     <main id="homepage" className="flex-row d-flex justify-content-center ">
       <div className="flex-row justify-center align-items-center">
       <div className="text-center justify-center px-5">
-        <img src={house1} className="homeCard position-relative py-2" width="200" />
-        <img src={house2} className="homeCard position-relative py-2" width="200" />
+        <img src={house1} className="homeCard position-relative py-2" width="200" alt="Hufflepuff" />
+        <img src={house2} className="homeCard position-relative py-2" width="200" alt="Gryffindor" />
         </div>
         <div className="text-center justify-center px-5">
-        <img src={remembrall} className=" position-relative" width="250" />
+        <img src={remembrall} className=" position-relative" width="250" alt="Remembrall" />
         <Rules />
         </div>
         <div className="text-center justify-center px-5">
-        <img src={house3} className="homeCard position-relative py-2" width="200" />
-        <img src={house4} className="homeCard position-relative py-2" width="200" />
+        <img src={house3} className="homeCard position-relative py-2" width="200" alt="Slytherin" />
+        <img src={house4} className="homeCard position-relative py-2" width="200" alt="Ravenclaw"/>
         </div>
       </div>
     </main>
