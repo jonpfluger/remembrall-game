@@ -21,7 +21,7 @@ As a wizard/witch, I want to be able to play a harry potter themed memory card g
 
 ## Screenshot
 
-![Sample Alt Text](./path)
+![Homepage of the Remembrall game application.](./client//src/img/remembrall-homepage-screenshot.png)
 
 ## Deployed Link
 
