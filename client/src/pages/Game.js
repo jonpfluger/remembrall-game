@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
-import { Get_Wizard } from "../utils/queries";
-import { useMutation } from "@apollo/client";
 
 import CardGrid from "../components/CardGrid";
 
@@ -11,7 +9,7 @@ const Home = () => {
   let intervalId;
   const [seconds, setSeconds] = useState(0);
   const [isActive, setActive] = useState(false);
-  const { loading, data } = useQuery(QUERY_ME);
+  const { data } = useQuery(QUERY_ME);
   const wizard = data?.me || [];
 
   useEffect(() => {

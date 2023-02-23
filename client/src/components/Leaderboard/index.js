@@ -1,14 +1,15 @@
-import { useMutation, useQuery } from "@apollo/client";
 
-import { QUERY_WIZARDS } from "../../utils/queries";
-import "../Leaderboard/leaderboard.css";
-import Button from "../Button";
-import ParticleHome from "../ParticleHome";
+import { useQuery } from '@apollo/client'
+
+import { QUERY_WIZARDS } from "../../utils/queries"
+import "../Leaderboard/leaderboard.css"
+import ParticleHome from '../ParticleHome'
 
 const Leaderboard = () => {
-  const { loading, data } = useQuery(QUERY_WIZARDS);
-  const wizardData = data?.wizards || [];
-  console.log(wizardData);
+    
+    const { data } = useQuery(QUERY_WIZARDS)
+    const wizardData = data?.wizards || []
+    console.log(wizardData)
 
   return (
     <main className="flex-row justify-center px-3 py-4 p-lg-5">

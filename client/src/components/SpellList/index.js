@@ -16,7 +16,7 @@ const SpellList = ({wizard, usingSpell}) => {
             usingSpell(wizard._id, spell.name) 
           }}
         >
-          {spell.name == "Revelio" 
+          {spell.name === "Revelio" 
             ? <img src={revelio.img} alt={spell.id} className="img-fluid"
             style={{maxHeight: 250 + 'px'}} /> 
             : <img src={accio.img} alt={spell.id} className="img-fluid" 
