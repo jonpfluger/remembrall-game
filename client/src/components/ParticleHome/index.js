@@ -55,7 +55,7 @@ function ParticleHome() {
                     "line_linked": {
                         "enable": false,
                         "distance": 120,
-                        "color": "#023e8a"
+                        "color": "000"
                     },
                     "move": {
                         "enable": true,
@@ -72,7 +72,7 @@ function ParticleHome() {
                             "mode": "grab"
                         },
                         "onclick": {
-                            "enable": true,
+                            "enable": false,
                             "mode": "remove"
                         }
                     }
