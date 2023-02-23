@@ -10,15 +10,15 @@ import "../HomePage/homepage.css";
 const HomePage = () => {
   return (
     <div className="row align-items-center justify-items-center">
-      <div className="col-lg-4 text-center">
+      <div className="col-lg-4 col-12 text-center">
         <img src={house1} className="homeCard py-2 px-2" width="200" />
         <img src={house2} className="homeCard  py-2 px-2" width="200" />
       </div>
-      <div className="col-lg-4 text-center">
+      <div className="col-lg-4 col-12 text-center">
         <img src={remembrall} width="250" />
         <Rules />
       </div>
-      <div className="col-lg-4 text-center">
+      <div className="col-lg-4 col-12 text-center">
         <img src={house3} className="homeCard  py-2 px-2" width="200" />
         <img src={house4} className="homeCard  py-2 px-2" width="200" />
       </div>

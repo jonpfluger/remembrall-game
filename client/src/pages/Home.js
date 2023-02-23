@@ -3,9 +3,8 @@ import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 
 import ParticleHome from "../components/ParticleHome";
-import HomePage from "../components/HomePage"
-import image from '../img/nogood.png'
-
+import HomePage from "../components/HomePage";
+import image from "../img/nogood.png";
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_ME);
@@ -17,10 +16,9 @@ const Home = () => {
       <h3 className="text-center px-3 py-4 text-white" id="wizard-name">
         Welcome {wizard.name}
         <div className="text-center pt-3">
-          <img className="container-fluid no-good"
-            src={image}
-          >
-          </img>
+          <h5 style={{ color: "#CAAC3D" }}>
+            I solemnly swear that I am up to no good...
+          </h5>
         </div>
       </h3>
       <HomePage />
