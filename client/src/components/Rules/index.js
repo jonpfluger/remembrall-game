@@ -14,12 +14,11 @@ const Rules = () => {
             Rules
           </h4>
           <div className="card-body">
-            <ul>
-              <li>Match 2 cards together.</li>
-              <li>Time will begin when the first card is selected.</li>
-              <li>Lower time = better score.</li>
-              <li>Spells can only be used once per game.</li>
-            </ul>
+              <p>Click Game to go to the game page.</p>
+              <p>Time will begin when the New Game button is selected.</p>
+              <p>Match 2 cards together.</p>
+              <p>Spells can only be used once per game.</p>
+              <p>Lower time = better score.</p>
           </div>
         </div>
       </div>
