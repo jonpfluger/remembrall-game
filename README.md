@@ -29,7 +29,7 @@ As a wizard/witch, I want to be able to play a Harry Potter themed memory card g
 
 ## Deployed Link
 
-test
+https://lit-cove-97949.herokuapp.com/
 
 ## Collaborators
 
