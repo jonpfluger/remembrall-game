@@ -21,7 +21,7 @@ function Particle({ matchResult }) {
             options={{
                 "particles": {
                     "number": {
-                        "value": 440
+                        "value": 200
                     },
                     "color": {
                         "value": color
@@ -30,7 +30,7 @@ function Particle({ matchResult }) {
                         "type": "circle",
                         "stroke": {
                             "width": 1,
-                            "color": "fff"
+                            "color": "ced4da"
                         }
                     },
                     "opacity": {

@@ -10,18 +10,26 @@ import "../HomePage/homepage.css";
 const HomePage = () => {
   return (
 
-    <div className="row align-items-center justify-items-center">
-      <div className="col-lg-4 col-12 text-center">
-        <img src={house1} className="homeCard py-2 px-2" width="200" alt="Hufflepuff" />
-        <img src={house2} className="homeCard  py-2 px-2" width="200" alt="Gryffindor"/>
+    <div className="row justify-items-center">
+      <div className="col-md-4 col-12 text-center">
+        <div>
+          <img src={house1} className="homeCard py-2 px-2" width="200" alt="Hufflepuff" />
+        </div>
+        <div>
+          <img src={house2} className="homeCard py-2 px-2" width="200" alt="Gryffindor" />
+        </div>
       </div>
-      <div className="col-lg-4 col-12 text-center">
+      <div className="col-md-4 col-12 text-center">
         <img src={remembrall} width="250" />
         <Rules />
       </div>
-      <div className="col-lg-4 col-12 text-center">
-        <img src={house3} className="homeCard  py-2 px-2" width="200" alt="Slytherin" />
-        <img src={house4} className="homeCard  py-2 px-2" width="200" alt="Ravenclaw"/>
+      <div className="col-md-4 col-12 text-center">
+        <div>
+          <img src={house3} className="homeCard  py-2 px-2" width="200" alt="Slytherin" />
+        </div>
+        <div>
+          <img src={house4} className="homeCard  py-2 px-2" width="200" alt="Ravenclaw" />
+        </div>
       </div>
     </div>
   );

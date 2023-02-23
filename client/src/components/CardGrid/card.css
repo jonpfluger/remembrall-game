@@ -25,6 +25,8 @@ h1 {
 }
 
 .gridCard {
+  position:relative;
+  z-index: 100;
   background-color: silver;
   display: flex;
   justify-content: center;
