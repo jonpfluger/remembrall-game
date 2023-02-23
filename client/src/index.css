@@ -44,6 +44,10 @@ h1 {
   margin: 0.67em 0;
 }
 
+li {
+  list-style: none;
+}
+
 .no-good {
   position: relative;
   max-width: fit-content;
