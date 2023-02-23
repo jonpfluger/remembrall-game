@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
+import { useNavigate } from 'react-router-dom'
 
 import Auth from "../../utils/auth";
 import { QUERY_ME } from "../../utils/queries";
@@ -103,6 +104,8 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
   const [matchResult, setMatchResult] = useState(null)
   const [unmatchedCards, setUnmatchedCards] = useState(cards);
 
+  let navigate = useNavigate()
+
   const { data } = useQuery(QUERY_ME);
   const wizard = data?.me || {};
 
@@ -165,7 +168,7 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
 
   function checkAuth() {
     console.log(Auth.loggedIn());
-    Auth.loggedIn() ? newGame() : window.location.replace("/login");
+    Auth.loggedIn() ? newGame() : navigate("/login");
   }
 
   function addingSpell(wizardId) {
@@ -258,7 +261,7 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
       }
 
       setTimeout(function () {
-        window.location.replace("/leaderboard");
+        navigate("/leaderboard");
       }, 2000);
     }
   });
