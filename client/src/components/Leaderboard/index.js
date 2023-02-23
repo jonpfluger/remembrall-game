@@ -1,13 +1,12 @@
-import {useMutation, useQuery} from '@apollo/client'
+import { useQuery } from '@apollo/client'
 
 import { QUERY_WIZARDS } from "../../utils/queries"
 import "../Leaderboard/leaderboard.css"
-import Button from '../Button'
 import ParticleHome from '../ParticleHome'
 
 const Leaderboard = () => {
     
-    const {loading, data} = useQuery(QUERY_WIZARDS)
+    const { data } = useQuery(QUERY_WIZARDS)
     const wizardData = data?.wizards || []
     console.log(wizardData)
 

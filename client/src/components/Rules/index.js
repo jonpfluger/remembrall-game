@@ -23,13 +23,6 @@ const Rules = () => {
         </div>
       </div>
     </main>
-    //     <div className="card border-secondary mb-3" style="max-width: 18rem;">
-    //     <div className="card-header">Rules</div>
-    //     <div className="card-body text-secondary">
-    //       <h5 className="card-title">Secondary card title</h5>
-    //       <p className="card-text"></p>
-    //     </div>
-    //   </div>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 
@@ -8,7 +8,7 @@ import image from '../img/nogood.png'
 
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_ME);
+  const { data } = useQuery(QUERY_ME);
   const wizard = data?.me || [];
 
   return (
@@ -17,7 +17,7 @@ const Home = () => {
       <h3 className="text-center px-3 py-4 text-white" id="wizard-name">
         Welcome {wizard.name}
         <div className="text-center pt-3">
-          <img className="container-fluid no-good"
+          <img className="container-fluid no-good" alt="No Good"
             src={image}
           >
           </img>
