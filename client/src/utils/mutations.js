@@ -61,9 +61,19 @@ export const REMOVE_SPELL = gql`
   }
 `;
 
-export const UPDATE_SCORE = gql`
-  mutation UPDATE_SCORE($score: Int, $wizardId: ID!) {
-    updateScore(score: $score, wizardId: $wizardId) {
+export const UPDATE_RECENT_SCORE = gql`
+  mutation UPDATE_RECENT_SCORE($score: Int, $wizardId: ID!) {
+    updateRecentScore(score: $score, wizardId: $wizardId) {
+      _id
+      name
+      recentScore
+    }
+  }
+`;
+
+export const UPDATE_BEST_SCORE = gql`
+  mutation UPDATE_BEST_SCORE($score: Int, $wizardId: ID!) {
+    updateBestScore(score: $score, wizardId: $wizardId) {
       _id
       name
       score

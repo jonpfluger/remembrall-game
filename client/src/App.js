@@ -12,9 +12,9 @@ import Home from './pages/Home';
 import Game from './pages/Game';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Leaderboard from './pages/Leaderboard';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Leaderboard from './components/Leaderboard';
 
 const httpLink = createHttpLink({
   uri: '/graphql',

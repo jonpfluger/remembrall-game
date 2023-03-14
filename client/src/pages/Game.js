@@ -5,7 +5,7 @@ import CardGrid from "../components/CardGrid";
 
 import { QUERY_ME } from "../utils/queries";
 
-const Home = () => {
+const Game = () => {
   let intervalId;
   const [seconds, setSeconds] = useState(0);
   const [isActive, setActive] = useState(false);
@@ -42,4 +42,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Game;

@@ -3,17 +3,16 @@ import { useQuery } from '@apollo/client'
 
 import { QUERY_WIZARDS } from "../../utils/queries"
 import "../Leaderboard/leaderboard.css"
-import ParticleHome from '../ParticleHome'
+// import ParticleHome from '../ParticleHome'
 
 const Leaderboard = () => {
-    
     const { data } = useQuery(QUERY_WIZARDS)
     const wizardData = data?.wizards || []
     console.log(wizardData)
 
   return (
-    <main className="flex-row justify-center px-3 py-4 p-lg-5">
-      <ParticleHome />
+    // <main className="flex-row justify-center px-3 py-4 p-lg-5">
+    //   <ParticleHome />
       <div className="col-12 col-lg-10">
         <div
           id="customLeaderboard"
@@ -39,7 +38,7 @@ const Leaderboard = () => {
           </div>
         </div>
       </div>
-    </main>
+    // </main>
   );
 };
 

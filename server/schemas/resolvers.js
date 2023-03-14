@@ -75,7 +75,16 @@ const resolvers = {
 
       return wizard.populate('spells')
     },
-    updateScore: async (parent, args, context) => {
+    updateRecentScore: async (parent, args, context) => {
+      const wizard = await Wizard.findOneAndUpdate(
+        { _id: args.wizardId },
+        { $set: { recentScore: args.score } },
+        { new: true }
+      )
+
+      return wizard.populate('spells')
+    },
+    updateBestScore: async (parent, args, context) => {
       const wizard = await Wizard.findOneAndUpdate(
         { _id: args.wizardId },
         { $set: { score: args.score } },

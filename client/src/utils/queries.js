@@ -7,6 +7,7 @@ export const QUERY_WIZARDS = gql`
       name
       email
       password
+      recentScore
       score
       spells {
         _id
@@ -27,6 +28,7 @@ export const QUERY_SINGLE_WIZARD = gql`
       name
       email
       password
+      recentScore
       score
       spells {
         spellId
@@ -45,6 +47,7 @@ export const QUERY_ME = gql`
       name
       email
       password
+      recentScore
       score
       spells {
         spellId

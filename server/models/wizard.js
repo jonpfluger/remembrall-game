@@ -19,6 +19,9 @@ const wizardSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  recentScore: {
+    type: Number
+  },
   score: {
     type: Number
   },
