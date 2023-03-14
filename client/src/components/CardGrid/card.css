@@ -22,6 +22,7 @@ h1 {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
   gap: 1em;
+  justify-items: center;
 }
 
 .gridCard {
@@ -34,6 +35,8 @@ h1 {
   border-radius: 5px;
   transform: rotateY(180deg);
   transition: transform 0.5s;
+  max-height: 180px;
+  max-width: 150px;
 }
 
 @keyframes hideCard {
@@ -55,6 +58,8 @@ h1 {
 .gridCard.active {
   transform: rotateY(0);
   pointer-events: none;
+  object-fit: contain;
+  width: 100%;
 }
 
 .gridCard.correct {
@@ -83,5 +88,36 @@ h1 {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
     gap: 1em;
+    width: 65%
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 1em;
+    width: 75%
+  }
+}
+
+@media (max-width: 625px) {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 1em;
+    width: 85%
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 1em;
+    width: 95%
   }
 }

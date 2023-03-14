@@ -269,7 +269,7 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
   return (
     <>
     {!!matchResult && <Particle matchResult={matchResult}/>}
-      <div className="row d-flex text-center justify-content-center">
+      <div className="row d-flex text-center justify-content-center mx-auto">
         <div className="col-10 mb-4">
           
           <Button 

@@ -1195,7 +1195,7 @@ label form [type="radio"] {
 }
 
 .container {
-  width: 85%;
+  width: 55%;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -1284,6 +1284,7 @@ label form [type="radio"] {
   flex-direction: row;
   margin-left: -15px;
   margin-right: -15px;
+  width: 100vw;
 }
 
 [class*="col-"] {
