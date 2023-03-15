@@ -24,7 +24,7 @@ const LeaderboardPage = () => {
             {wizard.name} Scores
           </h4>
           <div className="card-body text-center">
-            <p>Last Score: {wizard.score}</p>
+            <p>Recent Score: {wizard.recentScore}</p>
             <p>Best Score: {wizard.score}</p>
           </div>
         </div>
