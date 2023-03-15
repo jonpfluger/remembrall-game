@@ -11,11 +11,11 @@ const HomePage = () => {
   return (
 
     <div className="row justify-items-center">
-      <div className="col-md-4 col-12 text-center">
-        <div>
+      <div className="col-md-4 col-12 text-center align-self-center">
+        <div className="mb-5">
           <img src={house1} className="homeCard py-2 px-2" width="200" alt="Hufflepuff" />
         </div>
-        <div>
+        <div className="mb-5">
           <img src={house2} className="homeCard py-2 px-2" width="200" alt="Gryffindor" />
         </div>
       </div>
@@ -23,12 +23,12 @@ const HomePage = () => {
         <img src={remembrall} width="250" />
         <Rules />
       </div>
-      <div className="col-md-4 col-12 text-center">
-        <div>
+      <div className="col-md-4 col-12 text-center align-self-center">
+        <div className="mb-5">
           <img src={house3} className="homeCard  py-2 px-2" width="200" alt="Slytherin" />
         </div>
-        <div>
-          <img src={house4} className="homeCard  py-2 px-2" width="200" alt="Ravenclaw" />
+        <div className="mb-5">
+          <img src={house4} className="homeCard py-2 px-2" width="200" alt="Ravenclaw" />
         </div>
       </div>
     </div>
