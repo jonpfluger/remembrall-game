@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import Auth from "../../utils/auth";
 import { QUERY_ME } from "../../utils/queries";
-import { UPDATE_SCORE, ADD_SPELL, REMOVE_SPELL } from "../../utils/mutations";
+import { UPDATE_BEST_SCORE, ADD_SPELL, REMOVE_SPELL, UPDATE_RECENT_SCORE } from "../../utils/mutations";
 
 import Particle from "../Particle/Particle";
 import Button from "../Button";
@@ -109,7 +109,8 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
   const { data } = useQuery(QUERY_ME);
   const wizard = data?.me || {};
 
-  const [updateScore] = useMutation(UPDATE_SCORE);
+  const [updateBestScore] = useMutation(UPDATE_BEST_SCORE);
+  const [updateRecentScore] = useMutation(UPDATE_RECENT_SCORE)
   const [addSpell] = useMutation(ADD_SPELL);
   const [removeSpell] = useMutation(REMOVE_SPELL);
 
@@ -251,8 +252,16 @@ function CardGrid({ seconds, setSeconds, setActive, intervalId }) {
   useEffect(() => {
     if (matches === 8) {
       setActive(false);
+      
+      updateRecentScore({
+        variables: {
+          wizardId: wizard._id,
+          score: seconds
+        }
+      })
+
       if (wizard.score > seconds || wizard.score == null) {
-        updateScore({
+        updateBestScore({
           variables: {
             wizardId: wizard._id,
             score: seconds,
