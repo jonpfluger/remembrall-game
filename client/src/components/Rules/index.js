@@ -19,6 +19,9 @@ const Rules = () => {
             <p>Match 2 cards together.</p>
             <p>Spells can only be used once per game.</p>
             <p>Lower time = better score.</p>
+            <h5><u>Spells</u></h5>
+            <p>Revelio: reveals a random match.</p>
+            <p>Accio: summons the card that matches the card recently flipped.</p>
           </div>
         </div>
       </div>
