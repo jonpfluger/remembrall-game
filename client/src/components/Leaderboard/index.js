@@ -8,7 +8,11 @@ import "../Leaderboard/leaderboard.css"
 const Leaderboard = () => {
     const { data } = useQuery(QUERY_WIZARDS)
     const wizardData = data?.wizards || []
-    console.log(wizardData)
+    let newWizardArray = wizardData.filter(wizard => {
+      if (wizard.score !== null) {
+        return wizard
+      }
+    })
 
   return (
     // <main className="flex-row justify-center px-3 py-4 p-lg-5">
@@ -27,13 +31,14 @@ const Leaderboard = () => {
           </h4>
           <div className="card-body">
             <ol>
-              {wizardData
+              {newWizardArray
                 .map((wizard) => (
                   <li className="m-2 p-2" key={wizard._id}>
                     {wizard.name} | {wizard.score}{" "}
                   </li>
                 ))
-                .sort((a, b) => a.props.children[2] - b.props.children[2])}
+                .sort((a, b) => a.props.children[2] - b.props.children[2])
+                .slice(0, 15)}
             </ol>
           </div>
         </div>
