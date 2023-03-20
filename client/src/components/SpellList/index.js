@@ -18,9 +18,9 @@ const SpellList = ({wizard, usingSpell}) => {
         >
           {spell.name === "Revelio" 
             ? <img src={revelio.img} alt={spell.id} className="img-fluid"
-            style={{maxHeight: 250 + 'px'}} /> 
+            style={{maxHeight: 180 + 'px'}} /> 
             : <img src={accio.img} alt={spell.id} className="img-fluid" 
-            style={{maxHeight: 250 + 'px'}}/>}
+            style={{maxHeight: 180 + 'px'}}/>}
         </div>
       ))}
     </div>
